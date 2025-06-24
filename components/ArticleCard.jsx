@@ -5,7 +5,7 @@ function ArticleCard({ article }) {
   return (
     <div key={article.article_id} className="article-card">
       <Link to={`/article/${article.article_id}`}>
-        <div className="article-card-header">
+        <div className="article-header">
           <img
             src={article.article_img_url}
             alt="Article image"
@@ -16,7 +16,7 @@ function ArticleCard({ article }) {
       </Link>
 
       <div>
-        <div className="article-card-metadata">
+        <div className="article-metadata">
           <p className="pill">Author: {article.author}</p>
           <p className="pill">Topic: {article.topic}</p>
           <p className="pill">Date: {convertDate(article.created_at)}</p>
