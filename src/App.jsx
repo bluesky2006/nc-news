@@ -2,7 +2,7 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Header from "../components/Header";
 import ArticlesList from "../components/ArticlesList";
-import ArticleFull from "../components/ArticleFull";
+import ArticleDetail from "../components/ArticleDetail";
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<ArticlesList />} />
-        <Route path="/article/:article_id" element={<ArticleFull />} />
+        <Route path="/article/:article_id" element={<ArticleDetail />} />
       </Routes>
     </main>
   );
