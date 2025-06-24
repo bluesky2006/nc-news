@@ -7,6 +7,11 @@
   padding: 2rem;
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
 body {
   display: flex;
   max-width: 800px;
@@ -69,15 +74,21 @@ h3 {
   margin-right: 1rem;
 }
 
-.article-card-metadata {
+.article-metadata {
   display: flex;
   justify-content: space-between;
 }
 
-.article-card-header {
+.article-header {
   display: flex;
   border: 1px solid grey;
   padding: 1rem;
   border-radius: 5px;
   /* align-items: center; */
+}
+
+/* Article full */
+
+#full-article-title {
+  margin-bottom: 1rem;
 }
