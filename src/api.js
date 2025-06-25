@@ -48,8 +48,8 @@ export function fetchCommentsById(article_id) {
     });
 }
 
-export function increaseArticleVoteById(article_id) {
-  const body = JSON.stringify({ inc_votes: 1 });
+export function patchArticleVoteById(article_id, inc_votes) {
+  const body = JSON.stringify({ inc_votes });
 
   return fetch(`https://nc-news-3jz4.onrender.com/api/articles/${article_id}`, {
     method: "PATCH",
@@ -72,26 +72,31 @@ export function increaseArticleVoteById(article_id) {
     });
 }
 
-export function decreaseArticleVoteById(article_id) {
-  const body = JSON.stringify({ inc_votes: -1 });
+export function postCommentById(article_id, commentBody) {
+  const body = JSON.stringify(commentBody);
 
-  return fetch(`https://nc-news-3jz4.onrender.com/api/artiles/${article_id}`, {
-    method: "PATCH",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body,
-  })
+  return fetch(
+    `https://nc-news-3jz4.onrender.com/api/articles/${article_id}/comments`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body,
+    }
+  )
     .then((res) => {
       if (!res.ok) {
+        console.log(res, "res");
+
         return Promise.reject({
           status: res.status,
-          msg: "Failed to decrease vote",
+          msg: "Failed to post comment",
         });
       }
       return res.json();
     })
-    .then((article) => {
-      return article;
+    .then((comment) => {
+      return comment;
     });
 }
