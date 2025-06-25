@@ -5,11 +5,11 @@ function ArticleCard({ article }) {
   return (
     <div key={article.article_id} className="article-card">
       <Link to={`/article/${article.article_id}`}>
-        <div className="article-header">
+        <div className="article-card-header">
           <img
             src={article.article_img_url}
             alt="Article image"
-            className="article-image"
+            className="article-card-image"
           />
           <h3>{article.title}</h3>
         </div>

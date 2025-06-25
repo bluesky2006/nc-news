@@ -46,24 +46,22 @@ function ArticleDetail() {
 
   return (
     <section>
+      <div className="article-detail">
+        <img
+          src={article.article_img_url}
+          alt="Article image"
+          className="article-detail-image"
+        />{" "}
+        <h3 className="article-detail-title">{article.title}</h3>
+        <p>{article.body}</p>
+      </div>
       <div>
-        <h3 id="full-article-title">{article.title}</h3>
-        <div className="article-header">
-          <img
-            src={article.article_img_url}
-            alt="Article image"
-            className="article-image"
-          />
-          <p>{article.body}</p>
-        </div>
-        <div>
-          <div className="article-metadata">
-            <p className="pill">Author: {article.author}</p>
-            <p className="pill">Topic: {article.topic}</p>
-            <p className="pill">Date: {convertDate(article.created_at)}</p>
-            <p className="pill">Votes: {article.votes}</p>
-            <p className="pill">Comments: {article.comment_count}</p>
-          </div>
+        <div className="article-metadata">
+          <p className="pill">Author: {article.author}</p>
+          <p className="pill">Topic: {article.topic}</p>
+          <p className="pill">Date: {convertDate(article.created_at)}</p>
+          <p className="pill">Votes: {article.votes}</p>
+          <p className="pill">Comments: {article.comment_count}</p>
         </div>
       </div>
     </section>
