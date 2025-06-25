@@ -47,3 +47,51 @@ export function fetchCommentsById(article_id) {
       return comments;
     });
 }
+
+export function increaseArticleVoteById(article_id) {
+  const body = JSON.stringify({ inc_votes: 1 });
+
+  return fetch(`https://nc-news-3jz4.onrender.com/api/articles/${article_id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body,
+  })
+    .then((res) => {
+      if (!res.ok) {
+        return Promise.reject({
+          status: res.status,
+          msg: "Failed to inrease vote",
+        });
+      }
+      return res.json();
+    })
+    .then((article) => {
+      return article;
+    });
+}
+
+export function decreaseArticleVoteById(article_id) {
+  const body = JSON.stringify({ inc_votes: -1 });
+
+  return fetch(`https://nc-news-3jz4.onrender.com/api/artiles/${article_id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body,
+  })
+    .then((res) => {
+      if (!res.ok) {
+        return Promise.reject({
+          status: res.status,
+          msg: "Failed to decrease vote",
+        });
+      }
+      return res.json();
+    })
+    .then((article) => {
+      return article;
+    });
+}
