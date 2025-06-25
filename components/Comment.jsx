@@ -4,7 +4,6 @@ function Comment({ comments }) {
   if (!comments) {
     return null;
   }
-  console.log(comments[0], "what the object should look like");
   return (
     <section>
       {comments.map((comment, index) => {
