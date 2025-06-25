@@ -1,11 +1,15 @@
 import { convertDate } from "../utils";
 
 function Comment({ comments }) {
+  if (!comments) {
+    return null;
+  }
+  console.log(comments[0], "what the object should look like");
   return (
     <section>
-      {comments.map((comment) => {
+      {comments.map((comment, index) => {
         return (
-          <section key={comment.comment_id} className="comment">
+          <section key={index} className="comment">
             <p className="comment-body">{comment.body}</p>
             <div className="metadata">
               <p className="pill">

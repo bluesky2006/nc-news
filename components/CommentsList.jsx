@@ -4,49 +4,39 @@ import { useParams } from "react-router-dom";
 import Comment from "./Comment";
 
 function CommentsList() {
-  const [comments, setComments] = useState(null);
-  const [loading, setLoading] = useState("");
-  const [error, setError] = useState(null);
+  const [comments, setComments] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   let { article_id } = useParams();
 
   useEffect(() => {
-    setLoading("Loading");
-    setError(null);
-    setComments(null);
+    setLoading(true);
+    setError(false);
 
     fetchCommentsById(article_id)
       .then(({ comments }) => {
         setComments(comments);
-        setLoading("");
-        console.log(comments, "<< comments in Comments");
+        setLoading(false);
       })
-      .catch((err) => {
-        console.log(err, "<< error in Comments>>");
-        setError(err.msg);
-        setLoading("");
+      .catch(() => {
+        setError(true);
+        setLoading(false);
       });
   }, [article_id]);
 
-  if (error) {
-    return (
-      <section>
-        <p>No comments</p>
-      </section>
-    );
+  if (loading) {
+    return <p>Loading comments...</p>;
   }
 
-  if (!comments) {
-    return (
-      <section>
-        <p>{loading}</p>
-      </section>
-    );
+  if (error) {
+    return <p>Failed to load article</p>;
   }
+
+  if (!comments) return null;
 
   return (
     <section>
-      <h2>Comments</h2>
       <Comment key={comments.comment_id} comments={comments} />
     </section>
   );
