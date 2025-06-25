@@ -1,93 +1,59 @@
 import { useEffect, useState } from "react";
-import {
-  fetchArticleById,
-  increaseArticleVoteById,
-  decreaseArticleVoteById,
-} from "../src/api";
+import { fetchArticleById, patchArticleVoteById } from "../src/api";
 import { useParams } from "react-router-dom";
 import { convertDate } from "../utils";
 
 function ArticleDetail() {
   const [article, setArticle] = useState(null);
-  const [loading, setLoading] = useState("");
-  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
   const [voteError, setVoteError] = useState(null);
 
   let { article_id } = useParams();
 
   useEffect(() => {
-    setLoading("Loading");
-    setError(null);
-    setArticle(null);
+    setLoading(true);
+    setError(false);
 
     fetchArticleById(article_id)
       .then(({ article }) => {
         setArticle(article);
-        setLoading("");
-        console.log(article, "<< article in ArticleDetail");
+        setLoading(false);
       })
-      .catch((err) => {
-        console.log(err, "<< error in ArticleDetail>>");
-        setError(err.msg);
-        setLoading("");
+      .catch(() => {
+        setError(true);
+        setLoading(false);
       });
   }, [article_id]);
 
+  const castVote = (vote) => {
+    setArticle((currentArticle) => {
+      if (currentArticle.article_id === Number(article_id)) {
+        return { ...currentArticle, votes: currentArticle.votes + vote };
+      }
+      return currentArticle;
+    });
+
+    patchArticleVoteById(article_id, vote).catch(() => {
+      setArticle((currentArticle) => {
+        if (currentArticle.article_id === Number(article_id)) {
+          return { ...currentArticle, votes: currentArticle.votes - vote };
+        }
+        return currentArticle;
+      });
+      setVoteError("Vote failed. Please try again.");
+    });
+  };
+
+  if (loading) {
+    return <p>Loading article...</p>;
+  }
+
   if (error) {
-    return (
-      <section>
-        <p>{error}</p>
-      </section>
-    );
+    return <p>Failed to load article</p>;
   }
 
-  if (!article) {
-    return (
-      <section>
-        <p>{loading}</p>
-      </section>
-    );
-  }
-
-  const upVote = (article_id) => {
-    setArticle((currentArticle) => {
-      if (currentArticle.article_id == article_id) {
-        return { ...currentArticle, votes: currentArticle.votes + 1 };
-      }
-      console.log(currentArticle);
-      return currentArticle;
-    });
-
-    increaseArticleVoteById(article_id).catch(() => {
-      setArticle((currentArticle) => {
-        if (currentArticle.article_id == article_id) {
-          return { ...currentArticle, votes: currentArticle.votes - 1 };
-        }
-        return currentArticle;
-      });
-      setVoteError("Vote failed. Please try again.");
-    });
-  };
-
-  const downVote = (article_id) => {
-    setArticle((currentArticle) => {
-      if (currentArticle.article_id == article_id) {
-        return { ...currentArticle, votes: currentArticle.votes - 1 };
-      }
-      console.log(currentArticle);
-      return currentArticle;
-    });
-
-    decreaseArticleVoteById(article_id).catch(() => {
-      setArticle((currentArticle) => {
-        if (currentArticle.article_id == article_id) {
-          return { ...currentArticle, votes: currentArticle.votes + 1 };
-        }
-        return currentArticle;
-      });
-      setVoteError("Vote failed. Please try again.");
-    });
-  };
+  if (!article) return null;
 
   return (
     <section>
@@ -119,13 +85,13 @@ function ArticleDetail() {
         <div className="voting-div">
           <span
             className="material-symbols-outlined"
-            onClick={() => upVote(article_id)}
+            onClick={() => castVote(1)}
           >
             thumb_up
           </span>
           <span
             className="material-symbols-outlined"
-            onClick={() => downVote(article_id)}
+            onClick={() => castVote(-1)}
           >
             thumb_down
           </span>
