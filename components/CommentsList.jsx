@@ -41,7 +41,8 @@ function CommentsList() {
         setComments={setComments}
         comments={comments}
       />
-      <Comment comments={comments} />
+      <h3>Comments</h3>
+      <Comment setComments={setComments} comments={comments} />
     </section>
   );
 }
