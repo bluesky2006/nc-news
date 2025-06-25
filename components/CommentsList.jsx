@@ -2,6 +2,7 @@ import { fetchCommentsById } from "../src/api";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Comment from "./Comment";
+import CommentForm from "./CommentForm";
 
 function CommentsList() {
   const [comments, setComments] = useState([]);
@@ -33,11 +34,14 @@ function CommentsList() {
     return <p>Failed to load article</p>;
   }
 
-  if (!comments) return null;
-
   return (
     <section>
-      <Comment key={comments.comment_id} comments={comments} />
+      <CommentForm
+        article_id={article_id}
+        setComments={setComments}
+        comments={comments}
+      />
+      <Comment comments={comments} />
     </section>
   );
 }
