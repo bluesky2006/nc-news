@@ -162,6 +162,7 @@ Header {
 .delete-message {
   margin-top: 1rem;
   margin-bottom: 1.5rem;
+  color: red;
 }
 
 /* === Form === */
