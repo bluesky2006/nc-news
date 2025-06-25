@@ -7,6 +7,18 @@
   padding: 2rem;
 }
 
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 1, "wght" 200, "GRAD" 0, "opsz" 20;
+  font-size: 1.2rem;
+  padding: 0.3rem 0.5rem;
+  border-radius: 25px;
+  background-color: antiquewhite;
+}
+
+.material-symbols-outlined:hover {
+  color: white;
+}
+
 a {
   text-decoration: none;
   color: black;
@@ -56,10 +68,10 @@ h3 {
 
 .pill {
   padding: 0.3rem 0.5rem;
-  border: 1px solid grey;
   border-radius: 25px;
-  font-size: 0.8rem;
-  margin-bottom: 1rem;
+  background-color: antiquewhite;
+  /* border: 1px solid grey; */
+  font-size: 0.7rem;
 }
 
 /* Article List page */
@@ -67,6 +79,9 @@ h3 {
 .article-card {
   margin: 0;
   margin-bottom: 2rem;
+  border: 1px solid grey;
+  padding: 1rem;
+  border-radius: 5px;
 }
 
 .article-card-image {
@@ -79,15 +94,14 @@ h3 {
   margin-right: 1rem;
 }
 
-.article-metadata {
+.metadata {
   display: flex;
-  justify-content: space-between;
+  gap: 1rem;
+  justify-content: flex-end;
 }
 
 .article-card-header {
   display: flex;
-  border: 1px solid grey;
-  padding: 1rem;
   border-radius: 5px;
   margin-bottom: 1rem;
 }
@@ -107,7 +121,6 @@ h3 {
 .article-detail {
   border: 1px solid grey;
   border-radius: 5px;
-
   padding: 1rem;
   margin-bottom: 1rem;
 }
@@ -120,4 +133,42 @@ h3 {
 
 .article-detail-title {
   margin-bottom: 1rem;
+}
+
+#article-detail-pills {
+  margin-top: 1rem;
+}
+
+/* Comments */
+
+.comment {
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 1rem;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.comment-body {
+  margin-bottom: 1rem;
+}
+
+.vote-icon {
+  height: 1rem;
+}
+
+.voting-div {
+  display: flex;
+  gap: 0.2rem;
+  justify-content: flex-end;
+  margin-top: 1rem;
+  align-items: center;
+}
+
+.error-msg {
+  display: flex;
+  justify-content: flex-end;
+  color: red;
+  margin-top: 1rem;
+  font-size: 0.9rem;
 }
