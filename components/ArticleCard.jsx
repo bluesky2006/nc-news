@@ -3,7 +3,7 @@ import { convertDate } from "../utils";
 
 function ArticleCard({ article }) {
   return (
-    <div key={article.article_id} className="article-card">
+    <div key={article.article_id} className="card article-card">
       <Link to={`/article/${article.article_id}`}>
         <div className="article-card-header">
           <img

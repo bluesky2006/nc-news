@@ -57,13 +57,13 @@ function ArticleDetail() {
 
   return (
     <section>
-      <div className="article-detail">
+      <div className="card article-detail">
         <img
           src={article.article_img_url}
           alt="Article image"
           className="article-detail-image"
         />{" "}
-        <h3 className="article-detail-title">{article.title}</h3>
+        <h3>{article.title}</h3>
         <p>{article.body}</p>
         <div id="article-detail-pills" className="metadata">
           <p className="pill">
