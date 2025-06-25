@@ -14,14 +14,19 @@ function ArticleCard({ article }) {
           <h3>{article.title}</h3>
         </div>
       </Link>
-
-      <div>
-        <div className="article-metadata">
-          <p className="pill">Author: {article.author}</p>
-          <p className="pill">Topic: {article.topic}</p>
-          <p className="pill">Date: {convertDate(article.created_at)}</p>
-          <p className="pill">Votes: {article.votes}</p>
-        </div>
+      <div className="metadata">
+        <p className="pill">
+          <strong>Author:</strong> {article.author}
+        </p>
+        <p className="pill">
+          <strong>Topic:</strong> {article.topic}
+        </p>
+        <p className="pill">
+          <strong>Date:</strong> {convertDate(article.created_at)}
+        </p>
+        <p className="pill">
+          <strong>Votes:</strong> {article.votes}
+        </p>
       </div>
     </div>
   );
