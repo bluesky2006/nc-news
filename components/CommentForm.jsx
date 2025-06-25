@@ -35,7 +35,9 @@ function CommentForm({ article_id, setComments, comments }) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="add-comment">New comment</label>
+      <label htmlFor="add-comment">
+        <strong>New comment</strong>
+      </label>
       <div className="input-and-button-div">
         <input
           id="add-comment"
