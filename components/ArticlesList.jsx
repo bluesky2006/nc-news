@@ -4,42 +4,36 @@ import ArticleCard from "./ArticleCard";
 
 function ArticlesList() {
   const [articles, setArticles] = useState(null);
-  const [loading, setLoading] = useState("");
-  const [error, setError] = useState(null);
-  const [startIndex, setStartIndex] = useState(0);
-  const [endIndex, setEndIndex] = useState(8);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+  // const [startIndex, setStartIndex] = useState(0);
+  // const [endIndex, setEndIndex] = useState(8);
 
   useEffect(() => {
-    setLoading("Loading");
-    setError(null);
+    setLoading(true);
+    setError(false);
     setArticles(null);
 
-    fetchArticles(startIndex, endIndex)
+    fetchArticles()
       .then((articles) => {
         setArticles(articles);
-        setLoading("");
+        setLoading(false);
       })
-      .catch((err) => {
-        setError(err.msg);
-        setLoading("");
+      .catch(() => {
+        setError(true);
+        setLoading(false);
       });
-  }, [startIndex, endIndex]);
+  }, []);
+
+  if (loading) {
+    return <p>Loadin articles...</p>;
+  }
 
   if (error) {
-    return (
-      <section>
-        <p>No articles</p>
-      </section>
-    );
+    return <p>Failed to load articles</p>;
   }
 
-  if (!articles) {
-    return (
-      <section>
-        <p>{loading}</p>
-      </section>
-    );
-  }
+  if (!articles) return null;
 
   return (
     <section>
