@@ -34,7 +34,7 @@ function CommentForm({ article_id, setComments, comments }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="card">
       <label htmlFor="add-comment">
         <strong>New comment</strong>
       </label>
@@ -44,6 +44,8 @@ function CommentForm({ article_id, setComments, comments }) {
           type="text"
           value={input}
           onChange={handleInputChange}
+          placeholder="Write your comment in here..."
+          required
         />
         <button type="submit" disabled={posting}>
           {posting ? "Posting..." : "Post"}
