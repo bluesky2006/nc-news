@@ -5,6 +5,7 @@
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
+  box-sizing: border-box;
 }
 
 .material-symbols-outlined {
@@ -171,4 +172,24 @@ h3 {
   color: red;
   margin-top: 1rem;
   font-size: 0.9rem;
+}
+
+/* Form */
+
+input {
+  width: 100%;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+/* Button */
+
+button {
+  padding: 0.3rem 1rem;
+  float: right;
 }
