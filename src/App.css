@@ -123,7 +123,7 @@ h3 {
   border: 1px solid grey;
   border-radius: 5px;
   padding: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
 .article-detail-header {
@@ -178,12 +178,7 @@ h3 {
 
 input {
   width: 100%;
-}
-
-input[type="text"] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
+  padding: 12px 12px;
   box-sizing: border-box;
 }
 
@@ -192,4 +187,15 @@ input[type="text"] {
 button {
   padding: 0.3rem 1rem;
   float: right;
+}
+
+.input-and-button-div {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 4rem;
+  margin-top: 0.5rem;
+}
+
+#add-comment {
+  display: inline-block;
 }
