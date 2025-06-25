@@ -44,7 +44,12 @@ function CommentsList() {
     );
   }
 
-  return <Comment key={comments.comment_id} comments={comments} />;
+  return (
+    <section>
+      <h2>Comments</h2>
+      <Comment key={comments.comment_id} comments={comments} />
+    </section>
+  );
 }
 
 export default CommentsList;
