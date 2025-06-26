@@ -221,7 +221,7 @@ button:hover {
   border-radius: 5px;
   background-color: white;
   border: 0.5px solid #ffe100;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: bold;
   text-align: center;
   box-sizing: border-box;
@@ -273,7 +273,7 @@ button:hover {
 @media (min-width: 800px) {
   .desktop {
     display: block;
-    margin-top: 52px;
+    /* margin-top: 52px; */
   }
 
   .topic-pill-section {
@@ -286,4 +286,14 @@ button:hover {
 .content-layout {
   display: flex;
   gap: 2rem;
+}
+
+.sort-section {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+select {
+  width: 100px;
 }
