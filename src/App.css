@@ -12,7 +12,7 @@
 
 body {
   display: flex;
-  max-width: 1000px;
+  max-width: 800px;
   min-width: 320px;
   min-height: 100vh;
   margin: auto;
@@ -51,7 +51,7 @@ h3 {
 
 .pill {
   padding: 0.3rem 0.5rem;
-  border-radius: 25px;
+  border-radius: 5px;
   background-color: white;
   border: 0.5px solid #ffe100;
   font-size: 0.7rem;
@@ -190,12 +190,18 @@ input {
   padding: 12px 12px;
   box-sizing: border-box;
   border: 1px solid #ffe100;
+  border-radius: 5px;
 }
 
 .input-and-button-div {
   display: flex;
   gap: 1rem;
   margin-top: 0.5rem;
+}
+
+.input-and-button-div button {
+  height: 41.5px;
+  border: 1px solid #ffe100;
 }
 
 /* === Buttons === */
@@ -206,7 +212,7 @@ button {
   border: 0.5px solid #ffe100;
   border-radius: 5px;
   float: right;
-  height: 2.6rem;
+  height: 2rem;
 }
 
 button:hover {
@@ -219,13 +225,13 @@ button:hover {
 .topic-button-fill {
   padding: 0.5rem 1rem;
   border-radius: 5px;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: bold;
   text-align: center;
   box-sizing: border-box;
   display: block;
   border: 0.5px solid #ffe100;
-  width: 120px; /* default for topbar/mobile */
+  width: 100px;
 }
 
 .topic-button-fill {
@@ -246,66 +252,42 @@ button:hover {
   background-color: #ffea61;
 }
 
-.topic-pill-section {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.topic-filter-topbar {
-  display: none;
-  border-radius: 5px;
-  padding: 1rem;
-  margin-bottom: 2rem;
-  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
-  border: 1px solid #ffe100;
-}
-
-.topic-filter-sidebar {
-  display: none;
-  border-radius: 5px;
-  padding: 1rem;
-  margin-bottom: 2rem;
-  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
-  height: fit-content;
-  width: 200px;
-  flex-shrink: 0;
-  border: 1px solid #ffe100;
-}
-
-@media (max-width: 799px) {
-  .mobile {
-    display: block;
-  }
-  .content-layout {
-    flex-direction: column;
-  }
-}
-
-@media (min-width: 800px) {
-  .desktop {
-    display: block;
-    /* margin-top: 52px; */
-  }
-
-  .topic-pill-section {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-}
-
-.content-layout {
-  display: flex;
-  gap: 2rem;
-}
-
 .sort-section {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
+  align-items: flex-end;
+}
+
+.topic-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.topic-section p {
+  font-size: 0.9rem;
+}
+
+.topic-pill-section {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.filter {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  border-radius: 5px;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+
+.topic-filter p {
+  font-size: 0.9rem;
 }
 
 select {
@@ -314,7 +296,7 @@ select {
   border-radius: 5px;
   background-color: white;
   border: 0.5px solid #ffe100;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: bold;
   text-align: center;
   box-sizing: border-box;
@@ -347,4 +329,8 @@ option {
 option:hover,
 option:focus {
   background: #ffe100;
+}
+
+label {
+  font-size: 0.9rem;
 }
