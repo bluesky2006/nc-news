@@ -27,23 +27,24 @@ p {
   margin: 0;
 }
 
-h1 {
-  font-weight: 600;
-  font-style: normal;
-  font-size: 3em;
-  line-height: 1.1;
+h1,
+h2,
+h3 {
   margin: 0;
 }
 
+h1 {
+  font-weight: 600;
+  font-size: 3em;
+  line-height: 1.1;
+}
+
 h2 {
-  margin: 0;
   margin-bottom: 1rem;
 }
 
 h3 {
   font-size: 1.2rem;
-  margin: 0;
-  /* margin-bottom: 1rem; */
   line-height: 1.3;
 }
 
@@ -76,8 +77,7 @@ h3 {
 /* === Header === */
 
 header {
-  margin-bottom: 4rem;
-  margin-top: 2rem;
+  margin: 2rem 0 4rem;
 }
 
 .header-div {
@@ -107,30 +107,24 @@ header {
   justify-content: space-between;
 }
 
-.article-card-image {
-  width: 100px;
-  aspect-ratio: 1 / 1;
+.article-card-image,
+.article-detail-image {
   object-fit: cover;
   object-position: center;
   display: block;
   border-radius: 5px;
-  margin-right: 1rem;
 }
 
-/* === Article Detail === */
+.article-card-image {
+  width: 100px;
+  aspect-ratio: 1 / 1;
+  margin-right: 1rem;
+}
 
 .article-detail-image {
   width: 100%;
   aspect-ratio: 16 / 9;
-  object-fit: cover;
-  object-position: center;
-  display: block;
   margin-bottom: 1rem;
-  border-radius: 5px;
-}
-
-#article-detail-pills {
-  margin-top: 1rem;
 }
 
 /* === Voting === */
@@ -145,6 +139,9 @@ header {
 
 .material-symbols-outlined {
   font-variation-settings: "FILL" 1, "wght" 200, "GRAD" 0, "opsz" 20;
+}
+
+.thumb-button {
   font-size: 1.2rem;
   padding: 0.3rem 0.5rem;
   border-radius: 25px;
@@ -152,7 +149,7 @@ header {
   border: 0.5px solid #ffe100;
 }
 
-.material-symbols-outlined:hover {
+.thumb-button:hover {
   background-color: #ffe100;
 }
 
@@ -174,8 +171,7 @@ header {
 }
 
 .delete-message {
-  margin-top: 1rem;
-  margin-bottom: 1.5rem;
+  margin: 1rem 0 1.5rem;
   color: red;
 }
 
@@ -185,35 +181,26 @@ form {
   margin-bottom: 4rem;
 }
 
-input {
-  width: 100%;
-  padding: 12px 12px;
-  box-sizing: border-box;
-  border: 1px solid #ffe100;
-  border-radius: 5px;
-}
-
 .input-and-button-div {
   display: flex;
   gap: 1rem;
   margin-top: 0.5rem;
 }
 
-.input-and-button-div button {
-  height: 41.5px;
+input {
+  width: 100%;
+  padding: 12px;
+  box-sizing: border-box;
   border: 1px solid #ffe100;
+  border-radius: 5px;
 }
 
-/* === Buttons === */
-
+.input-and-button-div button,
 button {
-  height: 32px;
   padding: 0.3rem 1rem;
   background-color: white;
   border: 0.5px solid #ffe100;
   border-radius: 5px;
-  float: right;
-  height: 2rem;
   align-items: center;
 }
 
@@ -221,27 +208,29 @@ button:hover {
   background-color: #ffea61;
 }
 
-/* === Topics === */
+/* === Topics & Filter === */
 
 .topic-button-outline,
 .topic-button-fill {
+  height: 32px;
   padding: 0.5rem 1rem;
   border-radius: 5px;
   font-size: 0.8rem;
   font-weight: bold;
   text-align: center;
-  box-sizing: border-box;
   display: block;
   border: 0.5px solid #ffe100;
   width: 100px;
+  box-sizing: border-box;
 }
 
 .topic-button-fill {
   background-color: #ffe100;
 }
 
-.topic-button-outline {
-  background-color: white;
+.topic-button-outline:hover,
+.topic-pill:hover {
+  background-color: #ffea61;
 }
 
 @media (min-width: 800px) {
@@ -250,41 +239,53 @@ button:hover {
     width: 100%;
   }
 }
-.topic-pill:hover {
-  background-color: #ffea61;
-}
 
 .sort-section {
   display: flex;
-  flex-direction: row;
   gap: 0.2rem;
   justify-content: space-between;
   align-items: flex-end;
 }
 
+.drop-down-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 0.2rem;
+}
+
+.drop-down-container .material-symbols-outlined {
+  font-variation-settings: "FILL" 1, "wght" 300, "GRAD" 0, "opsz" 20;
+}
+
 .drop-down {
   display: flex;
   flex-direction: column;
+  gap: 0.5rem;
 }
 
-.sort-arrow-div {
+.sort-arrow-span {
+  padding: 0 0.4rem;
   display: flex;
-  height: 32px;
+  height: 31px;
+  background-color: white;
+  border: 0.5px solid #ffe100;
+  border-radius: 5px;
   align-items: center;
 }
 
-#sort-arrows {
-  border-radius: 5px;
+.sort-arrow-span:hover {
+  background-color: #ffea61;
 }
 
 .topic-section {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 
-.topic-section p {
+.topic-section p,
+label {
   font-size: 0.9rem;
 }
 
@@ -297,7 +298,7 @@ button:hover {
 .filter {
   position: sticky;
   top: 0;
-  background-color: #ffea61;
+  background-color: #fff5b5;
   display: flex;
   justify-content: space-between;
   align-content: center;
@@ -308,14 +309,10 @@ button:hover {
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 }
 
-.topic-filter p {
-  font-size: 0.9rem;
-}
-
 select {
   width: 120px;
   height: 32px;
-  padding: 0.4rem 1rem;
+  padding: 0.3rem 1rem;
   border-radius: 5px;
   background-color: white;
   border: 0.5px solid #ffe100;
@@ -344,15 +341,11 @@ option {
   justify-content: flex-start;
   gap: 10px;
   padding: 5px;
-  transition: 0.4s;
   font-weight: normal;
+  transition: 0.4s;
 }
 
 option:hover,
 option:focus {
   background: #ffe100;
-}
-
-label {
-  font-size: 0.9rem;
 }

@@ -84,13 +84,13 @@ function ArticleDetail() {
         </div>
         <div className="voting-div">
           <span
-            className="material-symbols-outlined"
+            className="thumb-button material-symbols-outlined"
             onClick={() => castVote(1)}
           >
             thumb_up
           </span>
           <span
-            className="material-symbols-outlined"
+            className="thumb-button material-symbols-outlined"
             onClick={() => castVote(-1)}
           >
             thumb_down
