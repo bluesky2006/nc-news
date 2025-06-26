@@ -63,7 +63,7 @@ function ArticleDetail() {
           alt="Article image"
           className="article-detail-image"
         />{" "}
-        <h3>{article.title}</h3>
+        <h2>{article.title}</h2>
         <p>{article.body}</p>
         <div id="article-detail-pills" className="metadata">
           <p className="pill">

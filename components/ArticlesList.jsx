@@ -35,10 +35,9 @@ function ArticlesList() {
 
   if (!articles) return null;
 
-
   return (
     <section>
-      <h2>Articles list</h2>
+      <h2>Articles</h2>
       <div>
         {articles.map((article) => {
           return <ArticleCard key={article.article_id} article={article} />;
