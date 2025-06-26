@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Header from "../components/Header";
 import ArticleView from "../components/ArticleView";
 import HomePage from "../components/HomePage";
+import ArticleListByTopic from "../components/ArticleListByTopic";
 
 function App() {
   return (
@@ -10,7 +11,8 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/article/:article_id" element={<ArticleView />} />
+        <Route path="/articles/:article_id" element={<ArticleView />} />
+        <Route path="/topics/:topic" element={<ArticleListByTopic />} />
       </Routes>
     </main>
   );
