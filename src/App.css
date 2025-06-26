@@ -207,12 +207,14 @@ input {
 /* === Buttons === */
 
 button {
+  height: 32px;
   padding: 0.3rem 1rem;
   background-color: white;
   border: 0.5px solid #ffe100;
   border-radius: 5px;
   float: right;
   height: 2rem;
+  align-items: center;
 }
 
 button:hover {
@@ -254,9 +256,25 @@ button:hover {
 
 .sort-section {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  gap: 0.2rem;
   justify-content: space-between;
   align-items: flex-end;
+}
+
+.drop-down {
+  display: flex;
+  flex-direction: column;
+}
+
+.sort-arrow-div {
+  display: flex;
+  height: 32px;
+  align-items: center;
+}
+
+#sort-arrows {
+  border-radius: 5px;
 }
 
 .topic-section {
@@ -277,11 +295,15 @@ button:hover {
 }
 
 .filter {
+  position: sticky;
+  top: 0;
+  background-color: #ffea61;
   display: flex;
   justify-content: space-between;
   align-content: center;
   border-radius: 5px;
   padding: 1rem;
+  gap: 2rem;
   margin-bottom: 2rem;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 }
@@ -292,13 +314,13 @@ button:hover {
 
 select {
   width: 120px;
-  padding: 0.5rem 1rem;
+  height: 32px;
+  padding: 0.4rem 1rem;
   border-radius: 5px;
   background-color: white;
   border: 0.5px solid #ffe100;
   font-size: 0.8rem;
   font-weight: bold;
-  text-align: center;
   box-sizing: border-box;
   transition: 0.4s;
 }
