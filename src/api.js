@@ -1,5 +1,7 @@
-export function fetchArticles(startIndex, endIndex) {
-  return fetch("https://nc-news-3jz4.onrender.com/api/articles")
+export function fetchArticles(sortBy = "created_at") {
+  return fetch(
+    `https://nc-news-3jz4.onrender.com/api/articles?sort_by=${sortBy}`
+  )
     .then((res) => {
       if (!res.ok) {
         return Promise.reject({
@@ -10,7 +12,7 @@ export function fetchArticles(startIndex, endIndex) {
       return res.json();
     })
     .then((articles) => {
-      return articles.articles.slice(startIndex, endIndex);
+      return articles;
     });
 }
 
@@ -132,8 +134,7 @@ export function fetchTopics() {
 }
 
 // To add: sort_by, order?
-export function fetchArticlesByQuery(topic) {
-  console.log("Fetching articles for topic:", topic);
+export function fetchArticlesByTopic(topic) {
   return fetch(`https://nc-news-3jz4.onrender.com/api/articles?topic=${topic}`)
     .then((res) => {
       if (!res.ok) {
@@ -145,7 +146,6 @@ export function fetchArticlesByQuery(topic) {
       return res.json();
     })
     .then(({ articles }) => {
-      console.log("Articles received:", articles);
       return articles;
     });
 }
