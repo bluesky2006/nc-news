@@ -114,3 +114,19 @@ export function deleteCommentById(comment_id) {
     return "Comment deleted";
   });
 }
+
+export function fetchTopics() {
+  return fetch("https://nc-news-3jz4.onrender.com/api/topics")
+    .then((res) => {
+      if (!res.ok) {
+        return Promise.reject({
+          status: res.status,
+          msg: "Failed to fetch topics",
+        });
+      }
+      return res.json();
+    })
+    .then((topics) => {
+      return topics;
+    });
+}
