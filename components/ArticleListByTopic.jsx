@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { fetchArticlesByQuery } from "../src/api";
+import { fetchArticlesByTopic } from "../src/api";
 import { useParams } from "react-router-dom";
 import ArticleCard from "./ArticleCard";
 
@@ -8,14 +8,13 @@ function ArticleListByTopic() {
   const [articles, setArticles] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  console.log(topic, "asahjfds");
 
   useEffect(() => {
     setLoading(true);
     setError(false);
     setArticles(null);
 
-    fetchArticlesByQuery(topic)
+    fetchArticlesByTopic(topic)
       .then((articles) => {
         setArticles(articles);
         setLoading(false);
