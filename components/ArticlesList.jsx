@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { fetchArticles } from "../src/api";
 import ArticleCard from "./ArticleCard";
+import FilterBar from "./FilterBar";
 
 function ArticlesList() {
   const [articles, setArticles] = useState(null);
@@ -41,6 +42,7 @@ function ArticlesList() {
 
   return (
     <section>
+      <FilterBar />
       <div>
         {articles.map((article) => (
           <ArticleCard key={article.article_id} article={article} />
