@@ -1,11 +1,13 @@
 import { useState } from "react";
+import { useContext } from "react";
+import { UserContext } from "./UserContext";
 import { postCommentById } from "../src/api";
 
 function CommentForm({ article_id, setComments, comments }) {
   const [input, setInput] = useState("");
   const [posting, setPosting] = useState(false);
   const [error, setError] = useState(false);
-  const [user] = useState("grumpy19");
+  const { loggedInUser } = useContext(UserContext);
 
   function handleInputChange(event) {
     setInput(event.target.value);
@@ -17,7 +19,7 @@ function CommentForm({ article_id, setComments, comments }) {
     setError(false);
 
     const body = {
-      username: user,
+      username: loggedInUser.name,
       body: input,
     };
 
