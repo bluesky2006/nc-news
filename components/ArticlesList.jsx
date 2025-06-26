@@ -26,7 +26,7 @@ function ArticlesList() {
   }, []);
 
   if (loading) {
-    return <p>Loadin articles...</p>;
+    return <p>Loading articles...</p>;
   }
 
   if (error) {
@@ -34,6 +34,7 @@ function ArticlesList() {
   }
 
   if (!articles) return null;
+
 
   return (
     <section>
