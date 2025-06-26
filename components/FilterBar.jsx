@@ -50,13 +50,9 @@ function FilterBar() {
         <p>Browse articles by topic</p>
         <div className="topic-pill-section">
           {topics.map((topic) => {
-            const buttonClass =
-              pathname === `/topics/${topic.slug}`
-                ? "topic-button-fill"
-                : "topic-button-outline";
             return (
               <Link to={`/topics/${topic.slug}`} key={topic.slug}>
-                <button className={buttonClass}>
+                <button className="topic-button-outline">
                   {topic.slug.replace(/\b\w/g, (letter) =>
                     letter.toUpperCase()
                   )}
@@ -68,24 +64,24 @@ function FilterBar() {
       </div>
       {pathname === "/" && (
         <div className="sort-section">
-          <div className="drop-down">
-            <label htmlFor="sort-by-select">Sort by</label>
-            <select
-              id="sort-by-select"
-              onChange={handleSortChange}
-              value={sortBy}
-            >
-              <option value="created_at">Date</option>
-              <option value="title">Title</option>
-              <option value="topic">Topic</option>
-              <option value="author">User</option>
-              <option value="votes">Votes</option>
-            </select>
-          </div>
-          <div className="sort-arrow-div">
-            <button id="sort-arrows" className="material-symbols-outlined">
+          <div className="drop-down-container">
+            <div className="drop-down">
+              <label htmlFor="sort-by-select">Sort by</label>
+              <select
+                id="sort-by-select"
+                onChange={handleSortChange}
+                value={sortBy}
+              >
+                <option value="created_at">Date</option>
+                <option value="title">Title</option>
+                <option value="topic">Topic</option>
+                <option value="author">User</option>
+                <option value="votes">Votes</option>
+              </select>
+            </div>
+            <div className="sort-arrow-span material-symbols-outlined">
               swap_vert
-            </button>
+            </div>
           </div>
         </div>
       )}
