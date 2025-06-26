@@ -1,9 +1,13 @@
 import { convertDate } from "../utils";
 import { deleteCommentById } from "../src/api";
 import { useState } from "react";
+import { useContext } from "react";
+import { UserContext } from "./UserContext";
 
 function Comment({ comments, setComments }) {
   const [deleted, setDeleted] = useState(null);
+  const { loggedInUser } = useContext(UserContext);
+
   if (!comments) {
     return null;
   }
@@ -22,7 +26,7 @@ function Comment({ comments, setComments }) {
       {deleted && <p className="delete-message">{deleted}</p>}
       {comments.map((comment, index) => {
         return (
-          <section key={index} className="card comment">
+          <section key={index} className="card">
             <p className="comment-body">{comment.body}</p>
             <div className="metadata">
               <p className="pill">
@@ -36,9 +40,11 @@ function Comment({ comments, setComments }) {
               </p>
             </div>
             <div className="delete-div">
-              <button onClick={() => handleDelete(comment.comment_id)}>
-                Delete comment
-              </button>
+              {loggedInUser.name === comment.author && (
+                <button onClick={() => handleDelete(comment.comment_id)}>
+                  Delete comment
+                </button>
+              )}
             </div>
           </section>
         );
