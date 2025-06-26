@@ -41,7 +41,6 @@ function ArticlesList() {
 
   return (
     <section>
-      <h2>Articles</h2>
       <div>
         {articles.map((article) => (
           <ArticleCard key={article.article_id} article={article} />
