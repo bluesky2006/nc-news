@@ -28,7 +28,6 @@ p {
 }
 
 h1 {
-  font-family: "Space Mono", monospace;
   font-weight: 600;
   font-style: normal;
   font-size: 3em;
@@ -216,19 +215,33 @@ button:hover {
 
 /* === Topics === */
 
-.topic-pill {
+.topic-button-outline,
+.topic-button-fill {
   padding: 0.5rem 1rem;
   border-radius: 5px;
-  background-color: white;
-  border: 0.5px solid #ffe100;
   font-size: 0.9rem;
   font-weight: bold;
   text-align: center;
   box-sizing: border-box;
   display: block;
-  width: 100%;
+  border: 0.5px solid #ffe100;
+  width: 120px; /* default for topbar/mobile */
 }
 
+.topic-button-fill {
+  background-color: #ffe100;
+}
+
+.topic-button-outline {
+  background-color: white;
+}
+
+@media (min-width: 800px) {
+  .topic-button-outline,
+  .topic-button-fill {
+    width: 100%;
+  }
+}
 .topic-pill:hover {
   background-color: #ffea61;
 }
@@ -291,9 +304,47 @@ button:hover {
 .sort-section {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 1rem;
 }
 
 select {
-  width: 100px;
+  width: 120px;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  background-color: white;
+  border: 0.5px solid #ffe100;
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-align: center;
+  box-sizing: border-box;
+  transition: 0.4s;
+}
+
+select,
+::picker(select) {
+  appearance: base-select;
+}
+
+select::picker-icon {
+  color: #ffe100;
+  transition: 0.4s rotate;
+}
+
+select:open::picker-icon {
+  rotate: 180deg;
+}
+
+option {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  padding: 5px;
+  transition: 0.4s;
+  font-weight: normal;
+}
+
+option:hover,
+option:focus {
+  background: #ffe100;
 }
