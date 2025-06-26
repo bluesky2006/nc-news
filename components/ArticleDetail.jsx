@@ -57,7 +57,7 @@ function ArticleDetail() {
 
   return (
     <section>
-      <div className="card article-detail">
+      <div className="card">
         <img
           src={article.article_img_url}
           alt="Article image"
