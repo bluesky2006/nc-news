@@ -130,3 +130,22 @@ export function fetchTopics() {
       return topics;
     });
 }
+
+// To add: sort_by, order?
+export function fetchArticlesByQuery(topic) {
+  console.log("Fetching articles for topic:", topic);
+  return fetch(`https://nc-news-3jz4.onrender.com/api/articles?topic=${topic}`)
+    .then((res) => {
+      if (!res.ok) {
+        return Promise.reject({
+          status: res.status,
+          msg: "Failed to fetch topic",
+        });
+      }
+      return res.json();
+    })
+    .then(({ articles }) => {
+      console.log("Articles received:", articles);
+      return articles;
+    });
+}
