@@ -1,13 +1,12 @@
-import Sidebar from "./Sidebar";
-import TopFilterBar from "./TopFilterBar";
+import TopicMenu from "./TopicMenu";
 import ArticlesList from "./ArticlesList";
 
 function HomePage() {
   return (
     <>
-      <TopFilterBar />
+      <TopicMenu variant="topbar" />
       <div className="content-layout">
-        <Sidebar />
+        <TopicMenu variant="sidebar" />
         <ArticlesList />
       </div>
     </>
