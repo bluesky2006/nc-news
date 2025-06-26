@@ -39,13 +39,13 @@ function Comment({ comments, setComments }) {
                 <strong>Votes:</strong> {comment.votes}
               </p>
             </div>
-            <div className="delete-div">
-              {loggedInUser.name === comment.author && (
+            {loggedInUser.name === comment.author && (
+              <div className="delete-div">
                 <button onClick={() => handleDelete(comment.comment_id)}>
                   Delete comment
                 </button>
-              )}
-            </div>
+              </div>
+            )}
           </section>
         );
       })}
