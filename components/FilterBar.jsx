@@ -68,19 +68,25 @@ function FilterBar() {
       </div>
       {pathname === "/" && (
         <div className="sort-section">
-          <label for="sort-by-select">Sort by</label>
-
-          <select
-            id="sort-by-select"
-            onChange={handleSortChange}
-            value={sortBy}
-          >
-            <option value="created_at">Date</option>
-            <option value="title">Title</option>
-            <option value="topic">Topic</option>
-            <option value="author">User</option>
-            <option value="votes">Votes</option>
-          </select>
+          <div className="drop-down">
+            <label htmlFor="sort-by-select">Sort by</label>
+            <select
+              id="sort-by-select"
+              onChange={handleSortChange}
+              value={sortBy}
+            >
+              <option value="created_at">Date</option>
+              <option value="title">Title</option>
+              <option value="topic">Topic</option>
+              <option value="author">User</option>
+              <option value="votes">Votes</option>
+            </select>
+          </div>
+          <div className="sort-arrow-div">
+            <button id="sort-arrows" className="material-symbols-outlined">
+              swap_vert
+            </button>
+          </div>
         </div>
       )}
     </section>
