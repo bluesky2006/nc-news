@@ -65,14 +65,20 @@ function FilterBar({ variant }) {
       )}
 
       <p>Browse articles by topic</p>
-      <div className="topic-pill-section">
-        {topics.map((topic) => (
-          <Link to={`/topics/${topic.slug}`} key={topic.slug}>
-            <p className="topic-pill">
-              {topic.slug.replace(/\b\w/g, (letter) => letter.toUpperCase())}
-            </p>
-          </Link>
-        ))}
+      <div className={"topic-pill-section"}>
+        {topics.map((topic) => {
+          const buttonClass =
+            pathname === `/topics/${topic.slug}`
+              ? "topic-button-fill"
+              : "topic-button-outline";
+          return (
+            <Link to={`/topics/${topic.slug}`} key={topic.slug}>
+              <p className={buttonClass}>
+                {topic.slug.replace(/\b\w/g, (letter) => letter.toUpperCase())}
+              </p>
+            </Link>
+          );
+        })}
       </div>
     </section>
   );
