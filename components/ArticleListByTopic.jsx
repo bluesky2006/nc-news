@@ -37,10 +37,6 @@ function ArticleListByTopic() {
 
   return (
     <section>
-      <h2>
-        {topic.replace(/\b\w/g, (firstLetter) => firstLetter.toUpperCase())}{" "}
-        articles
-      </h2>
       <div>
         {articles.map((article) => {
           return <ArticleCard key={article.article_id} article={article} />;
