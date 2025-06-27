@@ -29,23 +29,24 @@ function Comment({ comments, setComments }) {
     <section>
       {deleted && <p className="delete-message">{deleted}</p>}
       {comments.map((comment, index) => {
+        const { body, author, created_at, votes, comment_id } = comment;
         return (
           <section key={index} className="card">
-            <p className="comment-body">{comment.body}</p>
+            <p className="comment-body">{body}</p>
             <div className="metadata">
               <p className="pill">
-                <strong>Author:</strong> {comment.author}
+                <strong>Author:</strong> {author}
               </p>
               <p className="pill">
-                <strong>Date posted:</strong> {convertDate(comment.created_at)}
+                <strong>Date posted:</strong> {convertDate(created_at)}
               </p>
               <p className="pill">
-                <strong>Votes:</strong> {comment.votes}
+                <strong>Votes:</strong> {votes}
               </p>
             </div>
-            {loggedInUser.name === comment.author && (
+            {loggedInUser.name === author && (
               <div className="delete-div">
-                <button onClick={() => handleDelete(comment.comment_id)}>
+                <button onClick={() => handleDelete(comment_id)}>
                   Delete comment
                 </button>
               </div>
