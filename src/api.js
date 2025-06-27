@@ -64,7 +64,7 @@ export function patchArticleVoteById(article_id, inc_votes) {
       if (!res.ok) {
         return Promise.reject({
           status: res.status,
-          msg: "Failed to inrease vote",
+          msg: "Failed to change vote",
         });
       }
       return res.json();
@@ -89,8 +89,6 @@ export function postCommentById(article_id, commentBody) {
   )
     .then((res) => {
       if (!res.ok) {
-        console.log(res, "res");
-
         return Promise.reject({
           status: res.status,
           msg: "Failed to post comment",
@@ -133,14 +131,13 @@ export function fetchTopics() {
     });
 }
 
-// To add: sort_by, order?
 export function fetchArticlesByTopic(topic) {
   return fetch(`https://nc-news-3jz4.onrender.com/api/articles?topic=${topic}`)
     .then((res) => {
       if (!res.ok) {
         return Promise.reject({
           status: res.status,
-          msg: "Failed to fetch topic",
+          msg: "Failed to fetch topic articles",
         });
       }
       return res.json();
