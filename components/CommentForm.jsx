@@ -6,7 +6,7 @@ import { postCommentById } from "../src/api";
 function CommentForm({ article_id, setComments, comments }) {
   const [input, setInput] = useState("");
   const [posting, setPosting] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState("");
   const { loggedInUser } = useContext(UserContext);
 
   function handleInputChange(event) {
@@ -16,7 +16,7 @@ function CommentForm({ article_id, setComments, comments }) {
   function handleSubmit(event) {
     event.preventDefault();
     setPosting(true);
-    setError(false);
+    setError("");
 
     const body = {
       username: loggedInUser.name,
@@ -29,8 +29,8 @@ function CommentForm({ article_id, setComments, comments }) {
         setInput("");
         setPosting(false);
       })
-      .catch(() => {
-        setError(true);
+      .catch((err) => {
+        setError(err.msg);
         setPosting(false);
       });
   }
@@ -53,7 +53,7 @@ function CommentForm({ article_id, setComments, comments }) {
           {posting ? "Posting..." : "Post"}
         </button>
       </div>
-      {error && <p>Failed to post comment</p>}
+      {error && { error }}
     </form>
   );
 }
