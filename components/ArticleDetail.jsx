@@ -6,22 +6,22 @@ import { convertDate } from "../utils";
 function ArticleDetail() {
   const [article, setArticle] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState("");
   const [voteError, setVoteError] = useState(null);
 
   let { article_id } = useParams();
 
   useEffect(() => {
     setLoading(true);
-    setError(false);
+    setError("");
 
     fetchArticleById(article_id)
       .then(({ article }) => {
         setArticle(article);
         setLoading(false);
       })
-      .catch(() => {
-        setError(true);
+      .catch((err) => {
+        setError(err.msg);
         setLoading(false);
       });
   }, [article_id]);
@@ -45,17 +45,11 @@ function ArticleDetail() {
     });
   };
 
-  if (loading) {
-    return <p>Loading article...</p>;
-  }
-
-  if (error) {
-    return <p>Failed to load article</p>;
-  }
-
-  if (!article) return null;
-
-  return (
+  return loading ? (
+    <p>Loading article...</p>
+  ) : error ? (
+    <p>Failed to load article</p>
+  ) : !article ? null : (
     <section>
       <div className="card">
         <img
