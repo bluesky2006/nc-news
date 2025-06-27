@@ -278,6 +278,15 @@ button:hover {
   background-color: #ffea61;
 }
 
+.sort-div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.sort-div p {
+  font-size: 0.9rem;
+}
+
 .topic-section {
   display: flex;
   flex-direction: column;
