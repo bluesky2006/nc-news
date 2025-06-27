@@ -7,7 +7,7 @@ function Header() {
         <div className="header-div">
           <img
             className="logo"
-            src="../src/assets/logo.svg"
+            src="/src/assets/logo.svg"
             alt="Northcoder News logo"
           />
           <h1>northcoder news</h1>
