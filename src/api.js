@@ -6,7 +6,7 @@ export function fetchArticles(sortBy = "created_at", order = "desc") {
       if (!res.ok) {
         return Promise.reject({
           status: res.status,
-          msg: "Failed to fetch articles",
+          msg: "Failed to fetch articles.",
         });
       }
       return res.json();
@@ -22,7 +22,7 @@ export function fetchArticleById(article_id) {
       if (!res.ok) {
         return Promise.reject({
           status: res.status,
-          msg: "Failed to fetch article",
+          msg: "Failed to fetch article.",
         });
       }
       return res.json();
@@ -40,7 +40,7 @@ export function fetchCommentsById(article_id) {
       if (!res.ok) {
         return Promise.reject({
           status: res.status,
-          msg: "Failed to fetch comments",
+          msg: "Failed to fetch comments.",
         });
       }
       return res.json();
@@ -64,7 +64,7 @@ export function patchArticleVoteById(article_id, inc_votes) {
       if (!res.ok) {
         return Promise.reject({
           status: res.status,
-          msg: "Failed to change vote",
+          msg: "Failed to change vote.",
         });
       }
       return res.json();
@@ -91,7 +91,7 @@ export function postCommentById(article_id, commentBody) {
       if (!res.ok) {
         return Promise.reject({
           status: res.status,
-          msg: "Failed to post comment",
+          msg: "Failed to post comment.",
         });
       }
       return res.json();
@@ -108,7 +108,7 @@ export function deleteCommentById(comment_id) {
     if (!res.ok) {
       return Promise.reject({
         status: res.status,
-        msg: "Failed to delete comment",
+        msg: "Failed to delete comment.",
       });
     }
     return "Comment deleted";
@@ -121,7 +121,7 @@ export function fetchTopics() {
       if (!res.ok) {
         return Promise.reject({
           status: res.status,
-          msg: "Failed to fetch topics",
+          msg: "Failed to fetch topics.",
         });
       }
       return res.json();
@@ -131,13 +131,15 @@ export function fetchTopics() {
     });
 }
 
-export function fetchArticlesByTopic(topic) {
-  return fetch(`https://nc-news-3jz4.onrender.com/api/articles?topic=${topic}`)
+export function fetchArticlesByTopic(topic, sortBy, order) {
+  return fetch(
+    `https://nc-news-3jz4.onrender.com/api/articles?topic=${topic}&sort_by=${sortBy}&order=${order}`
+  )
     .then((res) => {
       if (!res.ok) {
         return Promise.reject({
           status: res.status,
-          msg: "Failed to fetch topic articles",
+          msg: "Failed to fetch topic articles.",
         });
       }
       return res.json();
