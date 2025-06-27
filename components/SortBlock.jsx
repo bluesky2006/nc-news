@@ -1,10 +1,14 @@
 import { useSearchParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 function SortBlock() {
   const [searchParams, setSearchParams] = useSearchParams();
+  const { pathname } = useLocation();
+  const regex = /topics/;
 
   const sortBy = searchParams.get("sort_by") || "created_at";
   const order = searchParams.get("order") || "desc";
+
   function handleSortChange(event) {
     setSearchParams({ sort_by: event.target.value, order });
   }
@@ -13,6 +17,7 @@ function SortBlock() {
     const newOrder = order === "desc" ? "asc" : "desc";
     setSearchParams({ sort_by: sortBy, order: newOrder });
   }
+
   return (
     <div className="sort-section">
       <div className="drop-down-container">
@@ -25,7 +30,7 @@ function SortBlock() {
           >
             <option value="created_at">Date</option>
             <option value="title">Title</option>
-            <option value="topic">Topic</option>
+            {regex.test(pathname) ? null : <option value="topic">Topic</option>}
             <option value="author">User</option>
             <option value="votes">Votes</option>
           </select>
