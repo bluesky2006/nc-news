@@ -1,15 +1,15 @@
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useSearchParams, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { fetchTopics } from "../src/api";
-import { useLocation } from "react-router-dom";
 
 function FilterBar() {
   const [topics, setTopics] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-
   const [searchParams, setSearchParams] = useSearchParams();
+  
   const sortBy = searchParams.get("sort_by") || "created_at";
+  const order = searchParams.get("order") || "desc";
 
   const { pathname } = useLocation();
 
@@ -29,7 +29,12 @@ function FilterBar() {
   }, []);
 
   function handleSortChange(event) {
-    setSearchParams({ sort_by: event.target.value });
+    setSearchParams({ sort_by: event.target.value, order });
+  }
+
+  function handleOrder() {
+    const newOrder = order === "desc" ? "asc" : "desc";
+    setSearchParams({ sort_by: sortBy, order: newOrder });
   }
 
   if (loading) {
@@ -79,8 +84,15 @@ function FilterBar() {
                 <option value="votes">Votes</option>
               </select>
             </div>
-            <div className="sort-arrow-span material-symbols-outlined">
-              swap_vert
+            <div className="sort-div">
+              <p>{order.charAt(0).toUpperCase() + order.slice(1)}</p>
+              <div
+                className="sort-arrow-span material-symbols-outlined"
+                onClick={handleOrder}
+                title={`Toggle order (currently ${order})`}
+              >
+                swap_vert
+              </div>
             </div>
           </div>
         </div>
