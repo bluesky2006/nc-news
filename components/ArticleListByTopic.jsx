@@ -7,11 +7,11 @@ function ArticleListByTopic() {
   const { topic } = useParams();
   const [articles, setArticles] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     setLoading(true);
-    setError(false);
+    setError("");
     setArticles(null);
 
     fetchArticlesByTopic(topic)
@@ -19,31 +19,27 @@ function ArticleListByTopic() {
         setArticles(articles);
         setLoading(false);
       })
-      .catch(() => {
-        setError(true);
+      .catch((err) => {
+        setError(err.msg);
         setLoading(false);
       });
   }, [topic]);
 
-  if (loading) {
-    return <p>Loading articles...</p>;
-  }
-
-  if (error) {
-    return <p>Failed to load articles</p>;
-  }
-
-  if (!articles) return null;
-
-  return (
+  return loading ? (
+    <p>Loading articles...</p>
+  ) : error ? (
+    <p>{error}</p>
+  ) : !articles ? null : (
     <section>
+      <h2>
+        {topic.replace(/\b\w/g, (letter) => letter.toUpperCase())} articles
+      </h2>
       <div>
-        {articles.map((article) => {
-          return <ArticleCard key={article.article_id} article={article} />;
-        })}
+        {articles.map((article) => (
+          <ArticleCard key={article.article_id} article={article} />
+        ))}
       </div>
     </section>
   );
 }
-
 export default ArticleListByTopic;
