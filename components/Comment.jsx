@@ -13,12 +13,16 @@ function Comment({ comments, setComments }) {
   }
 
   function handleDelete(comment_id) {
-    deleteCommentById(comment_id).then(() => {
-      setDeleted(`Your comment (${comment_id}) was deleted.`);
-      setComments((currComments) =>
-        currComments.filter((comment) => comment.comment_id !== comment_id)
-      );
-    });
+    deleteCommentById(comment_id)
+      .then(() => {
+        setDeleted(`Your comment (${comment_id}) was deleted.`);
+        setComments((currComments) =>
+          currComments.filter((comment) => comment.comment_id !== comment_id)
+        );
+      })
+      .catch(() => {
+        setDeleted(`Failed to delete your comment (${comment_id}).`);
+      });
   }
 
   return (
