@@ -7,7 +7,7 @@ import FilterBar from "./FilterBar";
 function ArticlesList() {
   const [articles, setArticles] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState("");
   const [searchParams] = useSearchParams();
 
   const sortBy = searchParams.get("sort_by") || "created_at";
@@ -15,7 +15,7 @@ function ArticlesList() {
 
   useEffect(() => {
     setLoading(true);
-    setError(false);
+    setError("");
     setArticles(null);
 
     fetchArticles(sortBy, order)
@@ -23,25 +23,17 @@ function ArticlesList() {
         setArticles(articles);
         setLoading(false);
       })
-      .catch(() => {
-        setError(true);
+      .catch((err) => {
+        setError(err.msg);
         setLoading(false);
       });
   }, [sortBy, order]);
 
-  if (loading) {
-    return <p>Loading articles...</p>;
-  }
-
-  if (error) {
-    return <p>Failed to load articles</p>;
-  }
-
-  if (!articles) {
-    return null;
-  }
-
-  return (
+  return loading ? (
+    <p>Loading articles...</p>
+  ) : error ? (
+    <p>{error}</p>
+  ) : !articles ? null : (
     <section>
       <FilterBar />
       <div>
