@@ -7,34 +7,30 @@ import CommentForm from "./CommentForm";
 function CommentsList() {
   const [comments, setComments] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState("");
 
   let { article_id } = useParams();
 
   useEffect(() => {
     setLoading(true);
-    setError(false);
+    setError("");
 
     fetchCommentsById(article_id)
       .then(({ comments }) => {
         setComments(comments);
         setLoading(false);
       })
-      .catch(() => {
-        setError(true);
+      .catch((err) => {
+        setError(err.status);
         setLoading(false);
       });
   }, [article_id]);
 
-  if (loading) {
-    return <p>Loading comments...</p>;
-  }
-
-  if (error) {
-    return <p>Failed to load article</p>;
-  }
-
-  return (
+  return loading ? (
+    <p>Loading comments...</p>
+  ) : error === 404 ? (
+    <p>No comments exist for that article.</p>
+  ) : (
     <section>
       <CommentForm
         article_id={article_id}
