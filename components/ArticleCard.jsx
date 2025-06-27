@@ -2,30 +2,40 @@ import { Link } from "react-router-dom";
 import { convertDate } from "../utils";
 
 function ArticleCard({ article }) {
+  const {
+    article_id,
+    article_img_url,
+    title,
+    author,
+    topic,
+    created_at,
+    votes,
+  } = article;
+
   return (
-    <div key={article.article_id} className="card">
+    <div key={article_id} className="card">
       <div className="article-card-header">
         <img
-          src={article.article_img_url}
+          src={article_img_url}
           alt="Article image"
           className="article-card-image"
         />
         <div className="article-card-content">
-          <Link to={`/articles/${article.article_id}`}>
-            <h3>{article.title}</h3>
+          <Link to={`/articles/${article_id}`}>
+            <h3>{title}</h3>
           </Link>
           <div className="metadata">
             <p className="pill">
-              <strong>Author:</strong> {article.author}
+              <strong>Author:</strong> {author}
             </p>
             <p className="pill">
-              <strong>Topic:</strong> {article.topic}
+              <strong>Topic:</strong> {topic}
             </p>
             <p className="pill">
-              <strong>Date:</strong> {convertDate(article.created_at)}
+              <strong>Date:</strong> {convertDate(created_at)}
             </p>
             <p className="pill">
-              <strong>Votes:</strong> {article.votes}
+              <strong>Votes:</strong> {votes}
             </p>
           </div>
         </div>
