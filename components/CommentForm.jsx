@@ -38,7 +38,7 @@ function CommentForm({ article_id, setComments, comments }) {
   return (
     <form onSubmit={handleSubmit} className="card">
       <label htmlFor="add-comment">
-        <strong>New comment</strong>
+        <strong>Post new comment</strong>
       </label>
       <div className="input-and-button-div">
         <input
@@ -46,7 +46,7 @@ function CommentForm({ article_id, setComments, comments }) {
           type="text"
           value={input}
           onChange={handleInputChange}
-          placeholder="Write your comment in here..."
+          placeholder="Write here..."
           required
         />
         <button type="submit" disabled={posting}>
