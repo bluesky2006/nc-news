@@ -1,6 +1,6 @@
-export function fetchArticles(sortBy = "created_at") {
+export function fetchArticles(sortBy = "created_at", order = "desc") {
   return fetch(
-    `https://nc-news-3jz4.onrender.com/api/articles?sort_by=${sortBy}`
+    `https://nc-news-3jz4.onrender.com/api/articles?sort_by=${sortBy}&order=${order}`
   )
     .then((res) => {
       if (!res.ok) {
