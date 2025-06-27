@@ -8,16 +8,17 @@ function ArticlesList() {
   const [articles, setArticles] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-
   const [searchParams] = useSearchParams();
+
   const sortBy = searchParams.get("sort_by") || "created_at";
+  const order = searchParams.get("order") || "desc";
 
   useEffect(() => {
     setLoading(true);
     setError(false);
     setArticles(null);
 
-    fetchArticles(sortBy)
+    fetchArticles(sortBy, order)
       .then(({ articles }) => {
         setArticles(articles);
         setLoading(false);
@@ -26,7 +27,7 @@ function ArticlesList() {
         setError(true);
         setLoading(false);
       });
-  }, [sortBy]);
+  }, [sortBy, order]);
 
   if (loading) {
     return <p>Loading articles...</p>;
