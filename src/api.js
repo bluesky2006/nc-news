@@ -11,7 +11,7 @@ export function fetchArticles(sortBy = "created_at", order = "desc") {
       }
       return res.json();
     })
-    .then((articles) => {
+    .then(({ articles }) => {
       return articles;
     });
 }
@@ -27,7 +27,7 @@ export function fetchArticleById(article_id) {
       }
       return res.json();
     })
-    .then((article) => {
+    .then(({ article }) => {
       return article;
     });
 }
@@ -45,7 +45,7 @@ export function fetchCommentsById(article_id) {
       }
       return res.json();
     })
-    .then((comments) => {
+    .then(({ comments }) => {
       return comments;
     });
 }
@@ -69,7 +69,7 @@ export function patchArticleVoteById(article_id, inc_votes) {
       }
       return res.json();
     })
-    .then((article) => {
+    .then(({ article }) => {
       return article;
     });
 }
@@ -96,7 +96,7 @@ export function postCommentById(article_id, commentBody) {
       }
       return res.json();
     })
-    .then((comment) => {
+    .then(({ comment }) => {
       return comment;
     });
 }
@@ -126,7 +126,7 @@ export function fetchTopics() {
       }
       return res.json();
     })
-    .then((topics) => {
+    .then(({ topics }) => {
       return topics;
     });
 }
