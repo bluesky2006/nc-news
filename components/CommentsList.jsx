@@ -1,30 +1,18 @@
 import { fetchCommentsById } from "../src/api";
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Comment from "./Comment";
 import CommentForm from "./CommentForm";
+import useApiRequest from "../utils";
 
 function CommentsList() {
-  const [comments, setComments] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-
   let { article_id } = useParams();
 
-  useEffect(() => {
-    setLoading(true);
-    setError("");
-
-    fetchCommentsById(article_id)
-      .then(({ comments }) => {
-        setComments(comments);
-        setLoading(false);
-      })
-      .catch((err) => {
-        setError(err.status);
-        setLoading(false);
-      });
-  }, [article_id]);
+  const {
+    data: comments,
+    setData: setComments,
+    loading,
+    error,
+  } = useApiRequest(fetchCommentsById, article_id);
 
   return loading ? (
     <p>Loading comments...</p>

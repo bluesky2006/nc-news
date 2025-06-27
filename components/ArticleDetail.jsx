@@ -1,30 +1,20 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { fetchArticleById, patchArticleVoteById } from "../src/api";
 import { useParams } from "react-router-dom";
 import { convertDate } from "../utils";
+import useApiRequest from "../utils";
 
 function ArticleDetail() {
-  const [article, setArticle] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
   const [voteError, setVoteError] = useState(null);
 
   let { article_id } = useParams();
 
-  useEffect(() => {
-    setLoading(true);
-    setError("");
-
-    fetchArticleById(article_id)
-      .then(({ article }) => {
-        setArticle(article);
-        setLoading(false);
-      })
-      .catch((err) => {
-        setError(err.status);
-        setLoading(false);
-      });
-  }, [article_id]);
+  const {
+    data: article,
+    setData: setArticle,
+    loading,
+    error,
+  } = useApiRequest(fetchArticleById, article_id);
 
   const castVote = (vote) => {
     setArticle((currentArticle) => {
@@ -50,7 +40,12 @@ function ArticleDetail() {
   }
 
   if (error === 404) {
-    return <p>Article does not exist. Try returning to the home page and cilcking on an article there.</p>;
+    return (
+      <p>
+        Article does not exist. Try returning to the home page and clicking on
+        an article there.
+      </p>
+    );
   }
 
   if (!article) {

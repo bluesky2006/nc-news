@@ -1,27 +1,10 @@
-import { useEffect, useState } from "react";
 import { fetchTopics } from "../src/api";
 import TopicBlock from "./TopicBlock";
 import SortBlock from "./SortBlock";
+import useApiRequest from "../utils";
 
 function FilterBar({ articleListByTopicError }) {
-  const [topics, setTopics] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-
-  useEffect(() => {
-    setLoading(true);
-    setError("");
-
-    fetchTopics()
-      .then(({ topics }) => {
-        setTopics(topics);
-        setLoading(false);
-      })
-      .catch((err) => {
-        setError(err.msg);
-        setLoading(false);
-      });
-  }, []);
+  const { data: topics, loading, error } = useApiRequest(fetchTopics);
 
   return loading ? (
     <p>Loading topics...</p>
