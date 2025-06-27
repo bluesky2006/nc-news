@@ -5,6 +5,7 @@ import ArticleView from "../components/ArticleView";
 import ArticlesList from "../components/ArticlesList";
 import ArticleListByTopic from "../components/ArticleListByTopic";
 import ErrorScreen from "../components/ErrorScreen";
+import Footer from "../components/Footer";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="*" element={<ErrorScreen />} />
         </Routes>
       </div>
+      <Footer />
     </main>
   );
 }
