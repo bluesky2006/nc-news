@@ -1,9 +1,11 @@
 /* === Global Styles === */
 
 #root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Work Sans", system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
-  font-weight: 200;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
@@ -31,30 +33,44 @@ h1,
 h2,
 h3 {
   margin: 0;
+  font-family: "Manrope";
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
 }
 
 h1 {
-  font-weight: 600;
   font-size: 3em;
-  line-height: 1.1;
+  line-height: 1;
+  color: #2cd070;
 }
 
 h2 {
+  font-weight: 600;
   margin-bottom: 1rem;
 }
 
 h3 {
+  font-weight: 600;
   font-size: 1.2rem;
   line-height: 1.3;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  height: 50px;
+  font-size: 0.8rem;
 }
 
 /* === Utility Classes === */
 
 .pill {
   padding: 0.3rem 0.5rem;
-  border-radius: 3px;
-  background-color: white;
-  border: 1px solid #ffe100;
+  border-radius: 10px;
+  border: 1px solid #2cd070;
   font-size: 0.7rem;
   display: inline-block;
 }
@@ -63,8 +79,41 @@ h3 {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  justify-content: space-between;
+  justify-content: flex-end;
+  align-items: center;
   margin-top: 1rem;
+}
+
+.masthead {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 0.8rem;
+}
+
+.masthead-combined {
+  display: flex;
+  justify-content: space-between;
+}
+
+.comment-title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.comment-title h2 {
+  margin-bottom: 0;
+}
+
+.comment-count {
+  padding: 0.2rem 0.5rem;
+  border: 1px solid #2cd070;
+  color: black;
+  font-weight: 400;
+  border-radius: 10px;
 }
 
 .card {
@@ -137,20 +186,30 @@ header {
   align-items: center;
 }
 
+.vote-number {
+  padding: 0.2rem 0.5rem;
+  border: 1px solid #2cd070;
+  color: black;
+  font-weight: 400;
+  border-radius: 10px;
+}
+
+.divider-bars {
+  font-weight: 400;
+  color: black;
+}
+
 .material-symbols-outlined {
   font-variation-settings: "FILL" 1, "wght" 200, "GRAD" 0, "opsz" 20;
 }
 
 .thumb-button {
   font-size: 1.2rem;
-  padding: 0.3rem 0.5rem;
-  border-radius: 25px;
   background-color: white;
-  border: 1px solid #ffe100;
 }
 
 .thumb-button:hover {
-  background-color: #ffe100;
+  color: #2cd070;
 }
 
 /* === Comments === */
@@ -198,20 +257,20 @@ input {
 
 input:focus {
   outline: none;
-  border: 2px solid #ffe100;
+  border: 2px solid #2cd070;
 }
 
 .input-and-button-div button,
 button {
   padding: 0.3rem 1rem;
   background-color: white;
-  border: 1px solid #ffe100;
+  border: 1px solid #2cd070;
   border-radius: 3px;
   align-items: center;
 }
 
 button:hover {
-  background-color: #ffea61;
+  background-color: #2cd070;
 }
 
 /* === Topics & Filter === */
@@ -225,24 +284,13 @@ button:hover {
   font-weight: bold;
   text-align: center;
   display: block;
-  border: 1px solid #ffe100;
+  border: 1px solid #2cd070;
   width: 100px;
-}
-
-.topic-button-fill {
-  background-color: #ffe100;
 }
 
 .topic-button-outline:hover,
 .topic-pill:hover {
-  background-color: #ffea61;
-}
-
-@media (min-width: 800px) {
-  .topic-button-outline,
-  .topic-button-fill {
-    width: 100%;
-  }
+  background-color: #2cd070;
 }
 
 .sort-section {
@@ -274,13 +322,13 @@ button:hover {
   display: flex;
   height: 31px;
   background-color: white;
-  border: 1px solid #ffe100;
+  border: 1px solid #2cd070;
   border-radius: 3px;
   align-items: center;
 }
 
 .sort-arrow-span:hover {
-  background-color: #ffea61;
+  background-color: #6dd197;
 }
 
 .sort-div {
@@ -289,7 +337,7 @@ button:hover {
   gap: 0.5rem;
 }
 .sort-div p {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
 }
 
 .topic-section {
@@ -300,7 +348,7 @@ button:hover {
 
 .topic-section p,
 label {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
 }
 
 .topic-pill-section {
@@ -312,7 +360,7 @@ label {
 .filter {
   position: sticky;
   top: 0;
-  background-color: #fff5b5;
+  background-color: white;
   display: flex;
   justify-content: space-between;
   border-radius: 3px;
@@ -328,10 +376,11 @@ select {
   padding: 0.3rem 1rem;
   border-radius: 3px;
   background-color: white;
-  border: 1px solid #ffe100;
+  border: 1px solid #2cd070;
   font-size: 0.8rem;
   font-weight: bold;
   transition: 0.4s;
+  align-items: center;
 }
 
 select,
@@ -340,7 +389,7 @@ select,
 }
 
 select::picker-icon {
-  color: #ffe100;
+  color: #2cd070;
   transition: 0.4s rotate;
 }
 
@@ -359,5 +408,5 @@ option {
 
 option:hover,
 option:focus {
-  background: #ffe100;
+  background: #2cd070;
 }

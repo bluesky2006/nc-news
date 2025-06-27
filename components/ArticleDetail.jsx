@@ -72,39 +72,47 @@ function ArticleDetail() {
           className="article-detail-image"
         />
         <h2>{title}</h2>
+        <div className="masthead-combined">
+          <div className="masthead">
+            <p>
+              <strong>Author:</strong> {author}
+            </p>
+            <p className="divider-bars">| </p>
+            <p>
+              <strong>Date:</strong> {convertDate(created_at)}
+            </p>
+            <p className="divider-bars">| </p>
+            <p>
+              <strong>Topic:</strong> {topic}
+            </p>
+          </div>
+          <div className="masthead">
+            <p>
+              <strong>Votes: </strong>
+              <span className="vote-number">{votes}</span>
+            </p>
+            <span
+              className="thumb-button material-symbols-outlined"
+              onClick={() => castVote(1)}
+            >
+              thumb_up
+            </span>
+            <span
+              className="thumb-button material-symbols-outlined"
+              onClick={() => castVote(-1)}
+            >
+              thumb_down
+            </span>
+          </div>
+          {voteError && <p className="error-msg">{voteError}</p>}
+        </div>
         <p>{body}</p>
-        <div id="article-detail-pills" className="metadata">
-          <p className="pill">
-            <strong>Author:</strong> {author}
-          </p>
-          <p className="pill">
-            <strong>Topic:</strong> {topic}
-          </p>
-          <p className="pill">
-            <strong>Date:</strong> {convertDate(created_at)}
-          </p>
-          <p className="pill">
-            <strong>Comments:</strong> {comment_count}
-          </p>
-          <p className="pill">
-            <strong>Votes:</strong> {votes}
-          </p>
-        </div>
-        <div className="voting-div">
-          <span
-            className="thumb-button material-symbols-outlined"
-            onClick={() => castVote(1)}
-          >
-            thumb_up
-          </span>
-          <span
-            className="thumb-button material-symbols-outlined"
-            onClick={() => castVote(-1)}
-          >
-            thumb_down
-          </span>
-        </div>
-        {voteError && <p className="error-msg">{voteError}</p>}
+      </div>
+      <div className="comment-title">
+        <h2>Comments</h2>
+        <p className="divider-bars">| </p>
+
+        <p className="comment-count">{comment_count}</p>
       </div>
     </section>
   );
