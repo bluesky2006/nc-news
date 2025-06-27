@@ -16,10 +16,9 @@ function ArticlesList() {
   useEffect(() => {
     setLoading(true);
     setError("");
-    setArticles(null);
 
     fetchArticles(sortBy, order)
-      .then(({ articles }) => {
+      .then((articles) => {
         setArticles(articles);
         setLoading(false);
       })

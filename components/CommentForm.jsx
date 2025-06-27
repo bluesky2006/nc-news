@@ -25,7 +25,7 @@ function CommentForm({ article_id, setComments, comments }) {
 
     postCommentById(article_id, body)
       .then((response) => {
-        setComments([response.comment, ...comments]);
+        setComments([response, ...comments]);
         setInput("");
         setPosting(false);
       })
