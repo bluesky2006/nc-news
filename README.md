@@ -34,12 +34,39 @@ You will need Node v23.11.0.
 
 ### Instructions
 
-First, clone the repo:
+First, in your terminal of cjhoice, clone the repo:
 
 `git clone https://github.com/bluesky2006/nc-news.git`
 
+Next, `cd` into the repo:
 
+`cd nc-news`
+
+Install the app dependencies:
+
+`npm install`
+
+Finally, run the app with the following command:
+
+`npm run dev`
+
+You should get a read-out like this:
+
+```
+> nc-news@0.0.0 dev
+> vite
+
+Port 5173 is in use, trying another one...
+
+  VITE v6.3.5  ready in 404 ms
+
+  ➜  Local:   http://localhost:5174/
+  ➜  Network: use --host to expose
+  ➜  press h + enter to show help
+```
+
+Copy the Local URL into your browser to view the app.
 
 ---
 
-This portfolio project was created as part of a Digital Skills Bootcamp in Software Engineering provided by [Northcoders](https://northcoders.com/)
+This portfolio project was created as part of a Digital Skills Bootcamp in Software Engineering provided by [Northcoders](https://northcoders.com/).
