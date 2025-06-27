@@ -52,9 +52,9 @@ h3 {
 
 .pill {
   padding: 0.3rem 0.5rem;
-  border-radius: 5px;
+  border-radius: 3px;
   background-color: white;
-  border: 0.5px solid #ffe100;
+  border: 1px solid #ffe100;
   font-size: 0.7rem;
   display: inline-block;
 }
@@ -68,7 +68,7 @@ h3 {
 }
 
 .card {
-  border-radius: 5px;
+  border-radius: 3px;
   padding: 1rem;
   margin-bottom: 2rem;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
@@ -97,7 +97,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: stretch;
-  border-radius: 5px;
+  border-radius: 3px;
 }
 
 .article-card-content {
@@ -112,7 +112,7 @@ header {
   object-fit: cover;
   object-position: center;
   display: block;
-  border-radius: 5px;
+  border-radius: 3px;
 }
 
 .article-card-image {
@@ -146,7 +146,7 @@ header {
   padding: 0.3rem 0.5rem;
   border-radius: 25px;
   background-color: white;
-  border: 0.5px solid #ffe100;
+  border: 1px solid #ffe100;
 }
 
 .thumb-button:hover {
@@ -173,6 +173,7 @@ header {
 .delete-message {
   margin: 1rem 0 1.5rem;
   color: red;
+  font-weight: bold;
 }
 
 /* === Form === */
@@ -190,17 +191,22 @@ form {
 input {
   width: 100%;
   padding: 12px;
-  box-sizing: border-box;
-  border: 1px solid #ffe100;
-  border-radius: 5px;
+  border: 2px solid transparent;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  border-radius: 3px;
+}
+
+input:focus {
+  outline: none;
+  border: 2px solid #ffe100;
 }
 
 .input-and-button-div button,
 button {
   padding: 0.3rem 1rem;
   background-color: white;
-  border: 0.5px solid #ffe100;
-  border-radius: 5px;
+  border: 1px solid #ffe100;
+  border-radius: 3px;
   align-items: center;
 }
 
@@ -214,14 +220,13 @@ button:hover {
 .topic-button-fill {
   height: 32px;
   padding: 0.5rem 1rem;
-  border-radius: 5px;
+  border-radius: 3px;
   font-size: 0.8rem;
   font-weight: bold;
   text-align: center;
   display: block;
-  border: 0.5px solid #ffe100;
+  border: 1px solid #ffe100;
   width: 100px;
-  box-sizing: border-box;
 }
 
 .topic-button-fill {
@@ -269,8 +274,8 @@ button:hover {
   display: flex;
   height: 31px;
   background-color: white;
-  border: 0.5px solid #ffe100;
-  border-radius: 5px;
+  border: 1px solid #ffe100;
+  border-radius: 3px;
   align-items: center;
 }
 
@@ -310,8 +315,7 @@ label {
   background-color: #fff5b5;
   display: flex;
   justify-content: space-between;
-  align-content: center;
-  border-radius: 5px;
+  border-radius: 3px;
   padding: 1rem;
   gap: 2rem;
   margin-bottom: 2rem;
@@ -320,14 +324,13 @@ label {
 
 select {
   width: 120px;
-  height: 32px;
+  height: 33px;
   padding: 0.3rem 1rem;
-  border-radius: 5px;
+  border-radius: 3px;
   background-color: white;
-  border: 0.5px solid #ffe100;
+  border: 1px solid #ffe100;
   font-size: 0.8rem;
   font-weight: bold;
-  box-sizing: border-box;
   transition: 0.4s;
 }
 
