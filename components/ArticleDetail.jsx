@@ -21,7 +21,7 @@ function ArticleDetail() {
         setLoading(false);
       })
       .catch((err) => {
-        setError(err.msg);
+        setError(err.status);
         setLoading(false);
       });
   }, [article_id]);
@@ -45,35 +45,54 @@ function ArticleDetail() {
     });
   };
 
-  return loading ? (
-    <p>Loading article...</p>
-  ) : error ? (
-    <p>Failed to load article</p>
-  ) : !article ? null : (
+  if (loading) {
+    return <p>Loading article...</p>;
+  }
+
+  if (error === 404) {
+    return <p>Article does not exist. Try returning to the home page and cilcking on an article there.</p>;
+  }
+
+  if (!article) {
+    return null;
+  }
+
+  const {
+    article_img_url,
+    title,
+    body,
+    author,
+    topic,
+    created_at,
+    comment_count,
+    votes,
+  } = article;
+
+  return (
     <section>
       <div className="card">
         <img
-          src={article.article_img_url}
+          src={article_img_url}
           alt="Article image"
           className="article-detail-image"
-        />{" "}
-        <h2>{article.title}</h2>
-        <p>{article.body}</p>
+        />
+        <h2>{title}</h2>
+        <p>{body}</p>
         <div id="article-detail-pills" className="metadata">
           <p className="pill">
-            <strong>Author:</strong> {article.author}
+            <strong>Author:</strong> {author}
           </p>
           <p className="pill">
-            <strong>Topic:</strong> {article.topic}
+            <strong>Topic:</strong> {topic}
           </p>
           <p className="pill">
-            <strong>Date:</strong> {convertDate(article.created_at)}
+            <strong>Date:</strong> {convertDate(created_at)}
           </p>
           <p className="pill">
-            <strong>Comments:</strong> {article.comment_count}
+            <strong>Comments:</strong> {comment_count}
           </p>
           <p className="pill">
-            <strong>Votes:</strong> {article.votes}
+            <strong>Votes:</strong> {votes}
           </p>
         </div>
         <div className="voting-div">
