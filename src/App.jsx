@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import ArticleView from "../components/ArticleView";
 import ArticlesList from "../components/ArticlesList";
 import ArticleListByTopic from "../components/ArticleListByTopic";
+import ErrorScreen from "../components/ErrorScreen";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/" element={<ArticlesList />} />{" "}
           <Route path="/articles/:article_id" element={<ArticleView />} />
           <Route path="/topics/:topic" element={<ArticleListByTopic />} />
+          <Route path="*" element={<ErrorScreen />} />
         </Routes>
       </div>
     </main>
