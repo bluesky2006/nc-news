@@ -38,7 +38,7 @@ function ArticleDetail({ article }) {
       <div className="card">
         <img
           src={article_img_url}
-          alt="Article image"
+          alt={`Image for article titled "${title}"`}
           className="article-detail-image"
         />
         <h2>{title}</h2>

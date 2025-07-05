@@ -21,7 +21,7 @@ function ArticleCard({ article }) {
       <div className="article-card-header">
         <img
           src={article_img_url}
-          alt="Article image"
+          alt={`Thumbnail image for article no. ${article_id}`}
           className="article-card-image"
         />
         <div className="article-card-content">
