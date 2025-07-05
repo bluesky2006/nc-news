@@ -43,7 +43,7 @@ h3 {
 h1 {
   font-size: 3em;
   line-height: 1;
-  color: #2cd070;
+  color: #1c8246;
 }
 
 h2 {
@@ -58,7 +58,6 @@ h3 {
 }
 
 .footer-div {
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -76,7 +75,7 @@ h3 {
 .pill {
   padding: 0.3rem 0.6rem;
   border-radius: 10px;
-  border: 1px solid #2cd070;
+  border: 1px solid #1c8246;
   font-size: 0.7rem;
   display: inline-block;
   align-content: center;
@@ -125,7 +124,7 @@ h3 {
 
 .comment-count {
   padding: 0.2rem 0.5rem;
-  border: 1px solid #2cd070;
+  border: 1px solid #1c8246;
   color: black;
   font-weight: 400;
   border-radius: 10px;
@@ -204,7 +203,7 @@ header {
 
 .vote-number {
   padding: 0.2rem 0.5rem;
-  border: 1px solid #2cd070;
+  border: 1px solid #1c8246;
   color: black;
   border-radius: 10px;
 }
@@ -224,7 +223,7 @@ header {
 }
 
 .thumb-button:hover {
-  color: #2cd070;
+  color: #1c8246;
 }
 
 /* === Comments === */
@@ -267,20 +266,20 @@ input {
 
 input:focus {
   outline: none;
-  border: 2px solid #2cd070;
+  border: 2px solid #1c8246;
 }
 
 .input-and-button-div button,
 button {
   padding: 0.3rem 1rem;
   background-color: white;
-  border: 1px solid #2cd070;
+  border: 1px solid #1c8246;
   border-radius: 3px;
   align-items: center;
 }
 
 button:hover {
-  background-color: #2cd070;
+  background-color: #1c8246;
 }
 
 /* === Topics & Filter === */
@@ -294,13 +293,13 @@ button:hover {
   font-weight: 200;
   text-align: center;
   display: block;
-  border: 1px solid #2cd070;
+  border: 1px solid #1c8246;
   width: 90px;
 }
 
 .topic-button-outline:hover,
 .topic-pill:hover {
-  background-color: #2cd070;
+  background-color: #1c8246;
 }
 
 .sort-section {
@@ -332,7 +331,7 @@ button:hover {
   display: flex;
   height: 31px;
   background-color: white;
-  border: 1px solid #2cd070;
+  border: 1px solid #1c8246;
   border-radius: 3px;
   align-items: center;
 }
@@ -389,7 +388,7 @@ select {
   padding: 0.3rem 1rem;
   border-radius: 3px;
   background-color: white;
-  border: 1px solid #2cd070;
+  border: 1px solid #1c8246;
   font-size: 0.8rem;
   font-weight: 400;
   transition: 0.4s;
@@ -402,7 +401,7 @@ select,
 }
 
 select::picker-icon {
-  color: #2cd070;
+  color: #1c8246;
   transition: 0.4s rotate;
 }
 
@@ -421,7 +420,7 @@ option {
 
 option:hover,
 option:focus {
-  background: #2cd070;
+  background: #1c8246;
 }
 
 .error-screen {
