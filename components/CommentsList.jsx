@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import Comment from "./Comment";
 import CommentForm from "./CommentForm";
 import useApiRequest from "../utils";
+import { useState } from "react";
 
 function CommentsList() {
   let { article_id } = useParams();
@@ -14,6 +15,8 @@ function CommentsList() {
     error,
   } = useApiRequest(fetchCommentsById, article_id);
 
+  const [deleted, setDeleted] = useState(null);
+
   return loading ? (
     <p>Loading comments...</p>
   ) : error === 404 ? (
@@ -22,10 +25,16 @@ function CommentsList() {
     <section>
       <CommentForm
         article_id={article_id}
-        setComments={setComments}
         comments={comments}
+        setComments={setComments}
+        setDeleted={setDeleted}
       />
-      <Comment setComments={setComments} comments={comments} />
+      <Comment
+        comments={comments}
+        setComments={setComments}
+        deleted={deleted}
+        setDeleted={setDeleted}
+      />
     </section>
   );
 }

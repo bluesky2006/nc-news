@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { UserContext } from "./UserContext";
 import { postCommentById } from "../src/api";
 
-function CommentForm({ article_id, setComments, comments }) {
+function CommentForm({ article_id, setComments, comments, setDeleted }) {
   const [input, setInput] = useState("");
   const [posting, setPosting] = useState(false);
   const [error, setError] = useState("");
@@ -17,6 +17,7 @@ function CommentForm({ article_id, setComments, comments }) {
     event.preventDefault();
     setPosting(true);
     setError("");
+    setDeleted(null);
 
     const body = {
       username: loggedInUser.name,
