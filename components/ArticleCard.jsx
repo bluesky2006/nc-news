@@ -13,6 +13,7 @@ function ArticleCard({ article }) {
     topic,
     created_at,
     votes,
+    comment_count,
   } = article;
 
   return (
@@ -31,9 +32,8 @@ function ArticleCard({ article }) {
             <p className="pill">Posted by {author}</p>
             <p className="pill">{topic}</p>
             <p className="pill">{convertDate(created_at)}</p>
-            <p className="pill">
-              {votes} votes
-            </p>
+            <p className="pill">{comment_count} comments</p>
+            <p className="pill">{votes} votes</p>
           </div>
         </div>
       </div>
