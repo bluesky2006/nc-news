@@ -31,7 +31,6 @@ function SortBlock() {
             <option value="created_at">Date</option>
             <option value="title">Title</option>
             {regex.test(pathname) ? null : <option value="topic">Topic</option>}
-            <option value="author">User</option>
             <option value="votes">Votes</option>
           </select>
         </div>
