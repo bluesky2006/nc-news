@@ -1,13 +1,10 @@
 import { fetchCommentsById } from "../src/api";
-import { useParams } from "react-router-dom";
 import Comment from "./Comment";
 import CommentForm from "./CommentForm";
 import useApiRequest from "../utils";
 import { useState } from "react";
 
-function CommentsList() {
-  let { article_id } = useParams();
-
+function CommentsList({ article_id }) {
   const {
     data: comments,
     setData: setComments,
