@@ -1,24 +1,25 @@
 import { convertDateWithTime } from "../utils";
 import { deleteCommentById } from "../src/api";
-import { useState } from "react";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { UserContext } from "./UserContext";
 
-function Comment({ comments, setComments }) {
-  const [deleted, setDeleted] = useState(null);
+function Comment({ comments, setComments, deleted, setDeleted }) {
   const { loggedInUser } = useContext(UserContext);
+  const [isDisabled, setIsDisabled] = useState(false);
 
   if (!comments) {
     return null;
   }
 
   function handleDelete(comment_id) {
+    setIsDisabled(true);
     deleteCommentById(comment_id)
       .then(() => {
         setDeleted(`Your comment (${comment_id}) was deleted.`);
         setComments((currComments) =>
           currComments.filter((comment) => comment.comment_id !== comment_id)
         );
+        setIsDisabled(false);
       })
       .catch(() => {
         setDeleted(`Failed to delete your comment (${comment_id}).`);
@@ -41,8 +42,11 @@ function Comment({ comments, setComments }) {
               </div>
               {loggedInUser.name === author && (
                 <div className="delete-div">
-                  <button onClick={() => handleDelete(comment_id)}>
-                    Delete comment
+                  <button
+                    onClick={() => handleDelete(comment_id)}
+                    disabled={isDisabled}
+                  >
+                    {!isDisabled ? "Delete comment" : "Deleting..."}
                   </button>
                 </div>
               )}
