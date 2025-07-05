@@ -1,4 +1,4 @@
-import { convertDate } from "../utils";
+import { convertDateWithTime } from "../utils";
 import { deleteCommentById } from "../src/api";
 import { useState } from "react";
 import { useContext } from "react";
@@ -32,25 +32,21 @@ function Comment({ comments, setComments }) {
         const { body, author, created_at, votes, comment_id } = comment;
         return (
           <section key={index} className="card">
-            <p className="comment-body">{body}</p>
+            <p>{body}</p>
             <div className="metadata">
-              <p className="pill">
-                <strong>Author:</strong> {author}
-              </p>
-              <p className="pill">
-                <strong>Date posted:</strong> {convertDate(created_at)}
-              </p>
-              <p className="pill">
-                <strong>Votes:</strong> {votes}
-              </p>
-            </div>
-            {loggedInUser.name === author && (
-              <div className="delete-div">
-                <button onClick={() => handleDelete(comment_id)}>
-                  Delete comment
-                </button>
+              <div className="pill-div">
+                <p className="pill">Posted by {author}</p>
+                <p className="pill">{convertDateWithTime(created_at)}</p>
+                <p className="pill">{votes} votes</p>
               </div>
-            )}
+              {loggedInUser.name === author && (
+                <div className="delete-div">
+                  <button onClick={() => handleDelete(comment_id)}>
+                    Delete comment
+                  </button>
+                </div>
+              )}
+            </div>
           </section>
         );
       })}

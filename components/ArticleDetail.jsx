@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { fetchArticleById, patchArticleVoteById } from "../src/api";
 import { useParams } from "react-router-dom";
-import { convertDate } from "../utils";
+import { convertDateWithTime } from "../utils";
 import useApiRequest from "../utils";
 
 function ArticleDetail() {
@@ -74,22 +74,17 @@ function ArticleDetail() {
         <h2>{title}</h2>
         <div className="masthead-combined">
           <div className="masthead">
-            <p>
-              <strong>Author:</strong> {author}
-            </p>
+            <p>Posted by {author}</p>
             <p className="divider-bars">| </p>
-            <p>
-              <strong>Date:</strong> {convertDate(created_at)}
-            </p>
+            <p>{convertDateWithTime(created_at)}</p>
             <p className="divider-bars">| </p>
-            <p>
-              <strong>Topic:</strong> {topic}
-            </p>
+            <p>{topic}</p>
           </div>
           <div className="masthead">
             <p>
-              <strong>Votes: </strong>
-              <span className="vote-number">{votes}</span>
+              <span className="vote-number">
+                <strong>{votes}</strong> votes
+              </span>
             </p>
             <span
               className="thumb-button material-symbols-outlined"

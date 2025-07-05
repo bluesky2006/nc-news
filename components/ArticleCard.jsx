@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
 import { convertDate } from "../utils";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+dayjs.extend(relativeTime);
 
 function ArticleCard({ article }) {
   const {
@@ -24,18 +27,12 @@ function ArticleCard({ article }) {
           <Link to={`/articles/${article_id}`}>
             <h3>{title}</h3>
           </Link>
-          <div className="metadata">
+          <div className="pill-div">
+            <p className="pill">Posted by {author}</p>
+            <p className="pill">{topic}</p>
+            <p className="pill">{convertDate(created_at)}</p>
             <p className="pill">
-              <strong>Author:</strong> {author}
-            </p>
-            <p className="pill">
-              <strong>Topic:</strong> {topic}
-            </p>
-            <p className="pill">
-              <strong>Date:</strong> {convertDate(created_at)}
-            </p>
-            <p className="pill">
-              <strong>Votes:</strong> {votes}
+              {votes} votes
             </p>
           </div>
         </div>
