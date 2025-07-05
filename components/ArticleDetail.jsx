@@ -1,58 +1,13 @@
-import { useState } from "react";
-import { fetchArticleById, patchArticleVoteById } from "../src/api";
-import { useParams } from "react-router-dom";
 import { convertDateWithTime } from "../utils";
-import useApiRequest from "../utils";
+import { patchArticleVoteById } from "../src/api";
+import { useState } from "react";
 
-function ArticleDetail() {
+function ArticleDetail({ article }) {
   const [voteError, setVoteError] = useState(null);
-
-  let { article_id } = useParams();
-
-  const {
-    data: article,
-    setData: setArticle,
-    loading,
-    error,
-  } = useApiRequest(fetchArticleById, article_id);
-
-  const castVote = (vote) => {
-    setArticle((currentArticle) => {
-      if (currentArticle.article_id === Number(article_id)) {
-        return { ...currentArticle, votes: currentArticle.votes + vote };
-      }
-      return currentArticle;
-    });
-
-    patchArticleVoteById(article_id, vote).catch(() => {
-      setArticle((currentArticle) => {
-        if (currentArticle.article_id === Number(article_id)) {
-          return { ...currentArticle, votes: currentArticle.votes - vote };
-        }
-        return currentArticle;
-      });
-      setVoteError("Vote failed. Please try again.");
-    });
-  };
-
-  if (loading) {
-    return <p>Loading article...</p>;
-  }
-
-  if (error === 404) {
-    return (
-      <p>
-        Article does not exist. Try returning to the home page and clicking on
-        an article there.
-      </p>
-    );
-  }
-
-  if (!article) {
-    return null;
-  }
+  const [localArticle, setLocalArticle] = useState(article);
 
   const {
+    article_id,
     article_img_url,
     title,
     body,
@@ -61,7 +16,22 @@ function ArticleDetail() {
     created_at,
     comment_count,
     votes,
-  } = article;
+  } = localArticle;
+
+  const castVote = (vote) => {
+    setLocalArticle((currentArticle) => ({
+      ...currentArticle,
+      votes: currentArticle.votes + vote,
+    }));
+
+    patchArticleVoteById(article_id, vote).catch(() => {
+      setLocalArticle((currentArticle) => ({
+        ...currentArticle,
+        votes: currentArticle.votes - vote,
+      }));
+      setVoteError("Vote failed. Please try again.");
+    });
+  };
 
   return (
     <section>
@@ -75,9 +45,9 @@ function ArticleDetail() {
         <div className="masthead-combined">
           <div className="masthead">
             <p>Posted by {author}</p>
-            <p className="divider-bars">| </p>
+            <p className="divider-bars">|</p>
             <p>{convertDateWithTime(created_at)}</p>
-            <p className="divider-bars">| </p>
+            <p className="divider-bars">|</p>
             <p>{topic}</p>
           </div>
           <div className="masthead">
@@ -105,8 +75,7 @@ function ArticleDetail() {
       </div>
       <div className="comment-title">
         <h2>Comments</h2>
-        <p className="divider-bars">| </p>
-
+        <p className="divider-bars">|</p>
         <p className="comment-count">{comment_count}</p>
       </div>
     </section>
