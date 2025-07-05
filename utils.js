@@ -6,6 +6,16 @@ export function convertDate(oldDate) {
     day: "numeric",
     month: "short",
     year: "numeric",
+  });
+  return formatted;
+}
+
+export function convertDateWithTime(oldDate) {
+  const date = new Date(oldDate);
+  const formatted = date.toLocaleString("en-GB", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
     hour: "2-digit",
     minute: "2-digit",
   });
