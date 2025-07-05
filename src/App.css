@@ -8,7 +8,8 @@
   font-style: normal;
   max-width: 800px;
   min-width: 320px;
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
   padding: 1rem;
   box-sizing: border-box;
 }
@@ -56,13 +57,18 @@ h3 {
   line-height: 1.3;
 }
 
-footer {
+.footer-div {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: end;
   height: 50px;
   font-size: 0.8rem;
+}
+
+.footer-text {
+  margin-top: auto;
 }
 
 /* === Utility Classes === */
@@ -416,4 +422,9 @@ option {
 option:hover,
 option:focus {
   background: #2cd070;
+}
+
+.error-screen {
+  text-align: center;
+  padding-top: 50px;
 }

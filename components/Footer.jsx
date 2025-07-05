@@ -1,7 +1,9 @@
 function Footer() {
   return (
     <footer>
-      <p>Copyright © 2025 Simon Busby</p>
+      <div className="footer-div">
+        <p className="footer-text">Copyright © 2025 Simon Busby</p>
+      </div>
     </footer>
   );
 }
