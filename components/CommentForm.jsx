@@ -61,7 +61,7 @@ function CommentForm({
           {posting ? "Posting..." : "Post"}
         </button>
       </div>
-      {error && { error }}
+      {error && <p className="error-msg">{error}</p>}
     </form>
   );
 }

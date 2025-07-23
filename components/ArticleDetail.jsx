@@ -23,13 +23,15 @@ function ArticleDetail({ article, commentCount }) {
       votes: currentArticle.votes + vote,
     }));
 
-    patchArticleVoteById(article_id, vote).catch(() => {
-      setLocalArticle((currentArticle) => ({
-        ...currentArticle,
-        votes: currentArticle.votes - vote,
-      }));
-      setVoteError("Vote failed. Please try again.");
-    });
+    patchArticleVoteById(article_id, vote)
+      .then(() => setVoteError(null))
+      .catch(() => {
+        setLocalArticle((currentArticle) => ({
+          ...currentArticle,
+          votes: currentArticle.votes - vote,
+        }));
+        setVoteError("Vote failed. Please try again.");
+      });
   };
 
   return (
@@ -68,9 +70,13 @@ function ArticleDetail({ article, commentCount }) {
               thumb_down
             </span>
           </div>
-          {voteError && <p className="error-msg">{voteError}</p>}
         </div>
         <p>{body}</p>
+        {voteError && (
+          <div className="error-container">
+            <p className="error-msg">{voteError}</p>
+          </div>
+        )}
       </div>
       <div className="comment-title">
         <h2>Comments</h2>

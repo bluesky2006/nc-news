@@ -1,6 +1,6 @@
 import { convertDateWithTime } from "../utils";
 import { deleteCommentById } from "../src/api";
-import { useContext, useState } from "react";
+import { useEffect, useContext, useState } from "react";
 import { UserContext } from "./UserContext";
 
 function Comment({
@@ -12,6 +12,15 @@ function Comment({
 }) {
   const { loggedInUser } = useContext(UserContext);
   const [isDisabled, setIsDisabled] = useState(false);
+
+  useEffect(() => {
+    if (deleted) {
+      const timeout = setTimeout(() => {
+        setDeleted(null);
+      }, 5000);
+      return () => clearTimeout(timeout);
+    }
+  }, [deleted, setDeleted]);
 
   if (!comments) {
     return null;
@@ -35,7 +44,11 @@ function Comment({
 
   return (
     <section>
-      {deleted && <p className="delete-message">{deleted}</p>}
+      {deleted && (
+        <div className="delete-container">
+          <p className="delete-msg">{deleted}</p>
+        </div>
+      )}
       {comments.map((comment, index) => {
         const { body, author, created_at, votes, comment_id } = comment;
         return (
