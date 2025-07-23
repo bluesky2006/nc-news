@@ -11,6 +11,7 @@
   margin-right: auto;
   max-width: 800px;
   min-width: 320px;
+  margin: 0 1rem;
 }
 
 body {
@@ -423,6 +424,11 @@ select:open::picker-icon {
   padding: 0.5rem 1rem;
   text-align: center;
   width: 90px;
+}
+
+.topic-button-outline.active {
+  background-color: #1c8246;
+  color: white;
 }
 
 .topic-button-outline:hover,
