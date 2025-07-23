@@ -1,7 +1,7 @@
-import { convertDateWithTime } from "../utils";
-import { deleteCommentById } from "../src/api";
+import { convertDateWithTime } from "../../utils";
+import { deleteCommentById } from "../../src/api";
 import { useEffect, useContext, useState } from "react";
-import { UserContext } from "./UserContext";
+import { UserContext } from "../UserContext";
 
 function Comment({
   comments,

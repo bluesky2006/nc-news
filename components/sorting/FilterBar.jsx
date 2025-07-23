@@ -1,7 +1,7 @@
-import { fetchTopics } from "../src/api";
+import { fetchTopics } from "../../src/api";
 import TopicBlock from "./TopicBlock";
 import SortBlock from "./SortBlock";
-import useApiRequest from "../utils";
+import useApiRequest from "../../utils";
 
 function FilterBar({ articleListByTopicError }) {
   const { data: topics, loading, error } = useApiRequest(fetchTopics);

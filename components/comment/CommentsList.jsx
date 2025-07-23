@@ -1,7 +1,7 @@
-import { fetchCommentsById } from "../src/api";
+import { fetchCommentsById } from "../../src/api";
 import Comment from "./Comment";
 import CommentForm from "./CommentForm";
-import useApiRequest from "../utils";
+import useApiRequest from "../../utils";
 import { useState } from "react";
 
 function CommentsList({ article_id, setCommentCount }) {

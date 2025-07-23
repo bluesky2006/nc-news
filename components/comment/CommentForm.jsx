@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useContext } from "react";
-import { UserContext } from "./UserContext";
-import { postCommentById } from "../src/api";
+import { UserContext } from "../UserContext";
+import { postCommentById } from "../../src/api";
 
 function CommentForm({
   article_id,

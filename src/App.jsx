@@ -1,9 +1,9 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Header from "../components/Header";
-import ArticleView from "../components/ArticleView";
-import ArticlesList from "../components/ArticlesList";
-import ArticleListByTopic from "../components/ArticleListByTopic";
+import ArticleView from "../components/article/ArticleView";
+import ArticlesList from "../components/article/ArticlesList";
+import ArticleListByTopic from "../components/article/ArticleListByTopic";
 import ErrorScreen from "../components/ErrorScreen";
 import Footer from "../components/Footer";
 

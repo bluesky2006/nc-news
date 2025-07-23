@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { convertDate } from "../utils";
+import { convertDate } from "../../utils";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 dayjs.extend(relativeTime);

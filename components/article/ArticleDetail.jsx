@@ -1,5 +1,5 @@
-import { convertDateWithTime } from "../utils";
-import { patchArticleVoteById } from "../src/api";
+import { convertDateWithTime } from "../../utils";
+import { patchArticleVoteById } from "../../src/api";
 import { useState } from "react";
 
 function ArticleDetail({ article, commentCount }) {

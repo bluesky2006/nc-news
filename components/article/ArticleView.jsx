@@ -1,9 +1,9 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { fetchArticleById } from "../src/api";
+import { fetchArticleById } from "../../src/api";
 import ArticleDetail from "./ArticleDetail";
-import CommentsList from "./CommentsList";
-import ErrorScreen from "./ErrorScreen";
+import CommentsList from "../comment/CommentsList";
+import ErrorScreen from "../ErrorScreen";
 
 function ArticleView() {
   const { article_id } = useParams();
@@ -33,10 +33,7 @@ function ArticleView() {
   return (
     <section>
       <ArticleDetail article={article} commentCount={commentCount} />
-      <CommentsList
-        article_id={article_id}
-        setCommentCount={setCommentCount}
-      />
+      <CommentsList article_id={article_id} setCommentCount={setCommentCount} />
     </section>
   );
 }

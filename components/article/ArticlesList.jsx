@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
-import { fetchArticlesByTopic } from "../src/api";
-import { useParams, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
+import { fetchArticles } from "../../src/api";
 import ArticleCard from "./ArticleCard";
-import FilterBar from "./FilterBar";
+import FilterBar from "../sorting/FilterBar";
 
-function ArticleListByTopic() {
-  const { topic } = useParams();
+function ArticlesList() {
   const [articles, setArticles] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -17,36 +16,27 @@ function ArticleListByTopic() {
   useEffect(() => {
     setLoading(true);
     setError("");
-    setArticles(null);
 
-    fetchArticlesByTopic(topic, sortBy, order)
+    fetchArticles(sortBy, order)
       .then((articles) => {
         setArticles(articles);
         setLoading(false);
       })
       .catch((err) => {
-        setError(err.status);
+        setError(err.msg);
         setLoading(false);
       });
-  }, [topic, sortBy, order]);
+  }, [sortBy, order]);
 
   return loading ? (
     <p>Loading articles...</p>
-  ) : error === 404 ? (
-    <section>
-      <FilterBar articleListByTopicError={error} />
-      <p>
-        That topic does not exist – try picking an existing one from the
-        selection above.
-      </p>
-    </section>
+  ) : error ? (
+    <p>{error}</p>
   ) : !articles ? null : (
     <section>
       <FilterBar />
-      <h2>
-        {topic.replace(/\b\w/g, (letter) => letter.toUpperCase())} articles
-      </h2>
       <div>
+        <h2>Articles</h2>
         {articles.map((article) => (
           <ArticleCard key={article.article_id} article={article} />
         ))}
@@ -54,4 +44,5 @@ function ArticleListByTopic() {
     </section>
   );
 }
-export default ArticleListByTopic;
+
+export default ArticlesList;
