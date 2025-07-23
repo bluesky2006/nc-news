@@ -4,7 +4,7 @@ import CommentForm from "./CommentForm";
 import useApiRequest from "../utils";
 import { useState } from "react";
 
-function CommentsList({ article_id }) {
+function CommentsList({ article_id, setCommentCount }) {
   const {
     data: comments,
     setData: setComments,
@@ -25,15 +25,16 @@ function CommentsList({ article_id }) {
         comments={comments}
         setComments={setComments}
         setDeleted={setDeleted}
+        setCommentCount={setCommentCount}
       />
       <Comment
         comments={comments}
         setComments={setComments}
         deleted={deleted}
         setDeleted={setDeleted}
+        setCommentCount={setCommentCount}
       />
     </section>
   );
 }
-
 export default CommentsList;

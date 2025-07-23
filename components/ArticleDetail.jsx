@@ -2,7 +2,7 @@ import { convertDateWithTime } from "../utils";
 import { patchArticleVoteById } from "../src/api";
 import { useState } from "react";
 
-function ArticleDetail({ article }) {
+function ArticleDetail({ article, commentCount }) {
   const [voteError, setVoteError] = useState(null);
   const [localArticle, setLocalArticle] = useState(article);
 
@@ -14,7 +14,6 @@ function ArticleDetail({ article }) {
     author,
     topic,
     created_at,
-    comment_count,
     votes,
   } = localArticle;
 
@@ -76,7 +75,7 @@ function ArticleDetail({ article }) {
       <div className="comment-title">
         <h2>Comments</h2>
         <p className="divider-bars">|</p>
-        <p className="comment-count">{comment_count}</p>
+        <p className="comment-count">{commentCount}</p>
       </div>
     </section>
   );

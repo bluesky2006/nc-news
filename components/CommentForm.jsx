@@ -3,7 +3,13 @@ import { useContext } from "react";
 import { UserContext } from "./UserContext";
 import { postCommentById } from "../src/api";
 
-function CommentForm({ article_id, setComments, comments, setDeleted }) {
+function CommentForm({
+  article_id,
+  setComments,
+  comments,
+  setDeleted,
+  setCommentCount,
+}) {
   const [input, setInput] = useState("");
   const [posting, setPosting] = useState(false);
   const [error, setError] = useState("");
@@ -29,6 +35,7 @@ function CommentForm({ article_id, setComments, comments, setDeleted }) {
         setComments([response, ...comments]);
         setInput("");
         setPosting(false);
+        setCommentCount((prev) => prev + 1);
       })
       .catch((err) => {
         setError(err.msg);

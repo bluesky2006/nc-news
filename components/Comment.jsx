@@ -3,7 +3,13 @@ import { deleteCommentById } from "../src/api";
 import { useContext, useState } from "react";
 import { UserContext } from "./UserContext";
 
-function Comment({ comments, setComments, deleted, setDeleted }) {
+function Comment({
+  comments,
+  setComments,
+  deleted,
+  setDeleted,
+  setCommentCount,
+}) {
   const { loggedInUser } = useContext(UserContext);
   const [isDisabled, setIsDisabled] = useState(false);
 
@@ -19,6 +25,7 @@ function Comment({ comments, setComments, deleted, setDeleted }) {
         setComments((currComments) =>
           currComments.filter((comment) => comment.comment_id !== comment_id)
         );
+        setCommentCount((prev) => prev - 1);
         setIsDisabled(false);
       })
       .catch(() => {
