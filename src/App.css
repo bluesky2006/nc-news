@@ -7,11 +7,10 @@
   font-style: normal;
   font-weight: 300;
   line-height: 1.5;
-  margin-left: auto;
-  margin-right: auto;
   max-width: 800px;
   min-width: 320px;
-  margin: 0 1rem;
+  margin: auto;
+  padding: 0 1rem;
 }
 
 body {
